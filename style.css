@@ -260,6 +260,55 @@ body.is-timeline-open {
   line-height: 1.55;
 }
 
+/* Easter egg — corner tap zones (low z-index so UI stays clickable) */
+.egg-zone {
+  position: fixed;
+  z-index: 5;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+body.egg-await-tl .egg-zone-tl,
+body.egg-await-br .egg-zone-br,
+body.egg-await-tr .egg-zone-tr {
+  pointer-events: auto;
+}
+
+.egg-zone-tl {
+  top: 0;
+  left: 0;
+}
+
+.egg-zone-tr {
+  top: 0;
+  right: 0;
+}
+
+.egg-zone-br {
+  right: 0;
+  bottom: 0;
+}
+
+body.egg-step-cat #version-cat-trigger {
+  cursor: pointer;
+}
+
+body.egg-step-cat #version-cat-trigger::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
+  pointer-events: none;
+}
+
+#version-cat-trigger {
+  position: relative;
+}
+
 .eyebrow {
   margin: 0 0 1.25rem;
   font-family: var(--mono);

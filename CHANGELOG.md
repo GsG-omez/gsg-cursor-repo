@@ -2,6 +2,10 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.8 — Corner-click easter egg
+- Sequence: upper-left → bottom-right → upper-right → open TSE Profile → click cat on V
+- Unlocks `easter-egg.html` — minimalist split-layout portfolio mimicking norhanelbe.com structure
+
 ## v1.7 — TSE theme, secure contact, reference cat
 - Purple glassmorphism theme aligned with TSE portfolio reference
 - TSE profile panel: skills, experience, tools, achievements
