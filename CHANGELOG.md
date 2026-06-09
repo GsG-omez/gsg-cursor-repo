@@ -2,6 +2,11 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.6 — Connect page + orange cat
+- **Connect with me** button (orange) links to `contact.html`
+- Contact form sends to demo Mailinator inbox (`gsgcursor-connect@mailinator.com`)
+- Stick figure on V replaced with subtle orange cat coiled around the left stroke
+
 ## v1.5 — Stats panel + testimonials
 - Stats: **90%** CSAT, enterprise support volume, **4+ yrs** experience
 - Anonymized customer review quotes
