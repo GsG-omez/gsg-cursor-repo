@@ -65,86 +65,105 @@ body.is-timeline-open {
   overflow-x: hidden;
 }
 
-/* Subtle AI / tech atmosphere */
-.ai-bg {
+/* IT infrastructure atmosphere */
+.it-bg {
   position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
   z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99, 102, 241, 0.08), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(139, 92, 246, 0.06), transparent 50%),
+    var(--bg);
 }
 
-.ai-orb {
+.it-circuit-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(90deg, transparent 49.5%, rgba(129, 140, 248, 0.35) 50%, transparent 50.5%),
+    linear-gradient(0deg, transparent 49.5%, rgba(129, 140, 248, 0.25) 50%, transparent 50.5%),
+    linear-gradient(45deg, transparent 49.7%, rgba(167, 139, 250, 0.2) 50%, transparent 50.3%),
+    linear-gradient(-45deg, transparent 49.7%, rgba(99, 102, 241, 0.18) 50%, transparent 50.3%);
+  background-size: 48px 48px, 48px 48px, 68px 68px, 68px 68px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, black 15%, transparent 78%);
+}
+
+.it-network-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480' viewBox='0 0 480 480'%3E%3Cg fill='none' stroke='%23818cf8' stroke-width='0.6' opacity='0.55'%3E%3Cpath d='M40 80h120v60H40z M200 200h100v80h-100z M320 60h80v100h-80z M80 300h140v70H80z M260 340h120v50H260z'/%3E%3Cpath d='M160 110h40 M300 140h20 M400 110v90 M220 280v20 M160 300v40 M380 340h-60'/%3E%3Ccircle cx='160' cy='110' r='3' fill='%23a78bfa'/%3E%3Ccircle cx='300' cy='240' r='3' fill='%23a78bfa'/%3E%3Ccircle cx='360' cy='110' r='3' fill='%23a78bfa'/%3E%3Ccircle cx='150' cy='370' r='3' fill='%23a78bfa'/%3E%3Ccircle cx='320' cy='365' r='3' fill='%23a78bfa'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 480px 480px;
+  animation: it-pan 90s linear infinite;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 10%, transparent 75%);
+}
+
+.it-data-flow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background: repeating-linear-gradient(
+    -12deg,
+    transparent,
+    transparent 18px,
+    rgba(56, 189, 248, 0.06) 18px,
+    rgba(56, 189, 248, 0.06) 19px
+  );
+  animation: it-flow 24s linear infinite;
+  mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);
+}
+
+.it-hex-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 0 L56 16 V48 L28 64 L0 48 V16 Z M28 36 L56 52 V84 L28 100 L0 84 V52 Z' fill='none' stroke='%23a78bfa' stroke-width='0.8'/%3E%3C/svg%3E");
+  background-size: 56px 100px;
+}
+
+.it-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.35;
-  animation: orb-drift 18s ease-in-out infinite;
+  filter: blur(90px);
+  opacity: 0.3;
+  animation: orb-drift 22s ease-in-out infinite;
 }
 
-.ai-orb-1 {
-  width: 460px;
-  height: 460px;
-  top: -10%;
-  left: 10%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, transparent 70%);
-  animation-delay: 0s;
+.it-orb-1 {
+  width: 420px;
+  height: 420px;
+  top: -12%;
+  right: 5%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
 }
 
-.ai-orb-2 {
-  width: 400px;
-  height: 400px;
-  bottom: 8%;
-  right: 8%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
-  animation-delay: -6s;
-  animation-duration: 22s;
+.it-orb-2 {
+  width: 360px;
+  height: 360px;
+  bottom: -8%;
+  left: 0;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, transparent 70%);
+  animation-delay: -8s;
+  animation-duration: 26s;
 }
 
-.ai-orb-3 {
-  width: 320px;
-  height: 320px;
-  top: 42%;
-  left: 52%;
-  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
-  animation-delay: -12s;
-  animation-duration: 20s;
+@keyframes it-pan {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-120px, -80px); }
+}
+
+@keyframes it-flow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40px); }
 }
 
 @keyframes orb-drift {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(24px, -18px) scale(1.04); }
-  66% { transform: translate(-16px, 12px) scale(0.97); }
-}
-
-.ai-mesh {
-  position: absolute;
-  inset: 0;
-  opacity: 0.05;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.9) 1px, transparent 1px),
-    radial-gradient(circle at 60% 70%, rgba(99, 102, 241, 0.8) 1px, transparent 1px),
-    radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.7) 1px, transparent 1px);
-  background-size: 120px 120px, 160px 160px, 200px 200px;
-  animation: mesh-shift 30s linear infinite;
-}
-
-@keyframes mesh-shift {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-40px, -30px); }
-}
-
-.grid-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
-  pointer-events: none;
-  opacity: 0.7;
+  33% { transform: translate(20px, -14px) scale(1.03); }
+  66% { transform: translate(-12px, 10px) scale(0.98); }
 }
 
 .page {
@@ -178,99 +197,20 @@ body.is-timeline-open {
   text-align: center;
 }
 
-/* Version badge — V + cat, no pill outline */
-.version-badge {
-  margin: 0 0 1.35rem;
-  padding: 0;
-  border: none;
-  background: none;
-}
-
-.version-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  line-height: 1;
-}
-
-.version-mark-group {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 0.05rem;
-  position: relative;
-  padding-bottom: 0.15rem;
-}
-
-.version-mark-group::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: -0.15rem;
-  right: 0.2rem;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.35), transparent);
-  border-radius: 1px;
-  pointer-events: none;
-}
-
-.v-cap {
+/* Version stamp — bottom left */
+.version-corner {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 10;
+  margin: 0;
   font-family: var(--mono);
-  font-size: 1.65rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: transparent;
-  background: linear-gradient(165deg, #93c5fd 0%, #38bdf8 45%, #818cf8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.22));
-  margin-bottom: 0.1rem;
-  margin-right: -0.15rem;
-}
-
-.version-cat-perch {
-  position: relative;
-  width: 40px;
-  height: 38px;
-  overflow: hidden;
-  flex-shrink: 0;
-  margin-bottom: -0.05rem;
-}
-
-.cat-glow-ledge {
-  position: absolute;
-  bottom: 1px;
-  left: 54%;
-  transform: translateX(-50%);
-  width: 28px;
-  height: 4px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(56, 189, 248, 0.6), transparent 72%);
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.version-cat-img {
-  position: relative;
-  z-index: 1;
-  display: block;
-  height: 38px;
-  width: 132px;
-  max-width: none;
-  object-fit: cover;
-  object-position: 11% 48%;
-  filter: saturate(0.94) brightness(1.03) contrast(1.04);
-  pointer-events: none;
-  user-select: none;
-}
-
-.version-num {
-  font-family: var(--mono);
-  font-size: 1.05rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgba(228, 228, 231, 0.92);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(167, 139, 250, 0.42);
+  pointer-events: none;
   animation: version-hop 5s ease-in-out infinite;
 }
 
@@ -1620,10 +1560,11 @@ body.is-timeline-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ai-orb,
-  .ai-mesh,
+  .it-orb,
+  .it-network-layer,
+  .it-data-flow,
   .greeting .name,
-  .version-num {
+  .version-corner {
     animation: none;
   }
 

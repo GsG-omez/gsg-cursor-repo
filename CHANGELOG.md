@@ -2,6 +2,10 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v2.1 — Corner version stamp + IT background
+- Removed center version badge (V, cat, number); `v2.1` stamp fixed bottom-left
+- New IT-themed background: circuit grid, network topology, hex mesh, data flow
+
 ## v2.0 — Version cat, UI polish, Ruby case study
 - Reference cat image beside cyan **V**; removed pill/oval outline; version hop retained
 - Larger **Built with Cursor AI** eyebrow; subtler translucent CTA buttons
