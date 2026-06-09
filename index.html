@@ -7,10 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=1.5" />
+    <link rel="stylesheet" href="style.css?v=1.5.1" />
   </head>
   <body>
     <div class="ai-bg" aria-hidden="true">
@@ -23,12 +23,19 @@
 
     <main class="page" id="page">
       <section class="hero">
-        <p class="eyebrow eyebrow-shimmer">
+        <p class="version-badge" aria-label="Version 1.5">
           <span class="version-live">
             <span class="version-perch">
+              <span class="v-ledge" aria-hidden="true"></span>
               <span class="stick-sitter" aria-hidden="true">
+                <span class="sitter-laptop"></span>
+                <span class="sitter-arm sitter-arm-l"></span>
+                <span class="sitter-arm sitter-arm-r"></span>
                 <span class="sitter-head"></span>
+                <span class="sitter-neck"></span>
                 <span class="sitter-torso"></span>
+                <span class="sitter-leg sitter-leg-l"></span>
+                <span class="sitter-leg sitter-leg-r"></span>
               </span>
               <span class="v-cap">V</span>
             </span><span class="version-num">1.5</span>
@@ -63,8 +70,59 @@
         </button>
       </div>
 
-      <!-- CSAT stat band (v1.5) — always visible, between buttons and timeline -->
-      <section class="stat-band" aria-label="Support track record">
+      <section class="about-panel" id="about-panel" hidden>
+        <div class="about-inner panel-box">
+          <header class="about-header">
+            <h2>Built organically with Cursor</h2>
+            <p class="about-intro">
+              Scroll left to right — each box is a version in chronological order, from first idea to
+              where you are now.
+            </p>
+          </header>
+
+          <div class="timeline-track">
+            <div class="iteration-list" id="iteration-list"></div>
+          </div>
+
+          <footer class="git-footer">
+            <span class="tag">Git</span>
+            <p>
+              Commit as <code>v1.5.1 - ui cleanup</code>, tag <code>v1.5.1</code>. Snapshot at
+              <code>versions/v1.5/</code>.
+            </p>
+          </footer>
+        </div>
+      </section>
+
+      <section class="cases-panel" id="cases-panel" hidden>
+        <div class="cases-inner panel-box">
+          <header class="cases-header">
+            <h2 id="cases-heading">Support case examples</h2>
+            <p class="cases-intro">
+              Real-world troubleshooting flows — expand a case, then walk through Ticket → Repro →
+              Root cause → Reply.
+            </p>
+          </header>
+          <div class="cases-list" id="cases-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Subtle credibility corner — bottom right -->
+    <aside class="credibility-corner" aria-label="Support track record">
+      <button
+        type="button"
+        class="credibility-toggle"
+        id="credibility-btn"
+        aria-expanded="false"
+        aria-controls="credibility-panel"
+      >
+        <span class="toggle-arrow" aria-hidden="true"></span>
+        <span class="credibility-teaser">
+          <span class="credibility-stat">90%</span> CSAT · ~700 supported · 4 yrs
+        </span>
+      </button>
+      <div class="credibility-panel panel-box" id="credibility-panel" hidden>
         <div class="stat-band-inner">
           <div class="stat-block">
             <div class="stat-number">90%</div>
@@ -81,7 +139,6 @@
             <div class="stat-label">Frontline Technical Support</div>
           </div>
         </div>
-
         <div class="stat-quotes">
           <blockquote class="stat-quote">
             "Did a fantastic job getting my logs parsed into usable fields. I was dreading this since I have limited knowledge about parsing, but it was quick, easy, and awesome work."
@@ -116,46 +173,9 @@
             <cite>— Jack</cite>
           </blockquote>
         </div>
-      </section>
+      </div>
+    </aside>
 
-      <section class="about-panel" id="about-panel" hidden>
-        <div class="about-inner">
-          <header class="about-header">
-            <h2>Built organically with Cursor</h2>
-            <p class="about-intro">
-              Scroll left to right — each box is a version in chronological order, from first idea to
-              where you are now.
-            </p>
-          </header>
-
-          <div class="timeline-track">
-            <div class="iteration-list" id="iteration-list"></div>
-          </div>
-
-          <footer class="git-footer">
-            <span class="tag">Git</span>
-            <p>
-              Commit as <code>v1.5 - csat stat band</code>, tag <code>v1.5</code>. Snapshot at
-              <code>versions/v1.4/</code>.
-            </p>
-          </footer>
-        </div>
-      </section>
-
-      <section class="cases-panel" id="cases-panel" hidden>
-        <div class="cases-inner">
-          <header class="cases-header">
-            <h2 id="cases-heading">Support case examples</h2>
-            <p class="cases-intro">
-              Real-world troubleshooting flows — expand a case, then walk through Ticket → Repro →
-              Root cause → Reply.
-            </p>
-          </header>
-          <div class="cases-list" id="cases-list"></div>
-        </div>
-      </section>
-    </main>
-
-    <script src="app.js?v=1.5"></script>
+    <script src="app.js?v=1.5.1"></script>
   </body>
 </html>

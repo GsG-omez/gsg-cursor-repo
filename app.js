@@ -250,6 +250,8 @@ const PREVIEWS = {
 
 const revealBtn = document.getElementById("reveal-btn");
 const casesBtn = document.getElementById("cases-btn");
+const credibilityBtn = document.getElementById("credibility-btn");
+const credibilityPanel = document.getElementById("credibility-panel");
 const aboutPanel = document.getElementById("about-panel");
 const casesPanel = document.getElementById("cases-panel");
 const iterationList = document.getElementById("iteration-list");
@@ -376,6 +378,13 @@ casesBtn.addEventListener("click", () => {
   if (!isOpen) {
     casesPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
+});
+
+credibilityBtn.addEventListener("click", () => {
+  const isOpen = credibilityBtn.getAttribute("aria-expanded") === "true";
+
+  credibilityBtn.setAttribute("aria-expanded", String(!isOpen));
+  credibilityPanel.hidden = isOpen;
 });
 
 renderIterations();
