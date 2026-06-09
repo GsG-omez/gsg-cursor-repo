@@ -17,6 +17,10 @@
   --case-accent: rgba(167, 139, 250, 0.12);
   --case-border: rgba(167, 139, 250, 0.35);
   --case-text: #c4b5fd;
+  --btn-cases: #a78bfa;
+  --btn-cases-hover: #c4b5fd;
+  --btn-cases-text: #2e1065;
+  --btn-cases-glow: rgba(167, 139, 250, 0.35);
   --radius: 12px;
   --sans: "Inter", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -78,6 +82,12 @@ body.is-timeline-open {
   padding-top: 3rem;
 }
 
+.page.is-cases-open {
+  max-width: min(720px, 96vw);
+  justify-content: flex-start;
+  padding-top: 3rem;
+}
+
 .hero {
   text-align: center;
 }
@@ -108,6 +118,15 @@ body.is-timeline-open {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 360px;
 }
 
 .btn-primary {
@@ -152,12 +171,56 @@ body.is-timeline-open {
     0 4px 20px var(--btn-glow);
 }
 
-.about-panel {
+.btn-cases {
+  background: var(--btn-cases);
+  color: var(--btn-cases-text);
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.3),
+    0 4px 24px var(--btn-cases-glow),
+    0 0 48px rgba(167, 139, 250, 0.1);
+  transition:
+    background 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+}
+
+.btn-cases:hover {
+  background: var(--btn-cases-hover);
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(196, 181, 253, 0.45),
+    0 6px 32px var(--btn-cases-glow),
+    0 0 64px rgba(167, 139, 250, 0.18);
+}
+
+.btn-cases:active {
+  transform: translateY(0);
+}
+
+.btn-cases[aria-expanded="true"] {
+  background: #7c3aed;
+  color: #f5f3ff;
+  box-shadow:
+    0 0 0 2px rgba(167, 139, 250, 0.55),
+    0 4px 20px var(--btn-cases-glow);
+}
+
+.about-panel,
+.cases-panel {
   width: 100%;
   animation: fade-in 0.35s ease;
 }
 
-.about-panel[hidden] {
+.about-panel[hidden],
+.cases-panel[hidden] {
   display: none;
 }
 
@@ -510,10 +573,12 @@ body.is-timeline-open {
 }
 
 /* Support case examples */
-.cases-section {
-  margin-top: 2rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--border);
+.cases-inner {
+  background: var(--surface);
+  border: 1px solid var(--case-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  background: linear-gradient(180deg, var(--case-accent) 0%, var(--surface) 35%);
 }
 
 .cases-header h2 {

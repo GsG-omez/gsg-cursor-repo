@@ -200,7 +200,9 @@ const PREVIEWS = {
 };
 
 const revealBtn = document.getElementById("reveal-btn");
+const casesBtn = document.getElementById("cases-btn");
 const aboutPanel = document.getElementById("about-panel");
+const casesPanel = document.getElementById("cases-panel");
 const iterationList = document.getElementById("iteration-list");
 const casesList = document.getElementById("cases-list");
 const page = document.getElementById("page");
@@ -310,6 +312,18 @@ revealBtn.addEventListener("click", () => {
 
   if (!isOpen) {
     aboutPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+});
+
+casesBtn.addEventListener("click", () => {
+  const isOpen = casesBtn.getAttribute("aria-expanded") === "true";
+
+  casesBtn.setAttribute("aria-expanded", String(!isOpen));
+  casesPanel.hidden = isOpen;
+  page.classList.toggle("is-cases-open", !isOpen);
+
+  if (!isOpen) {
+    casesPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 });
 
