@@ -14,6 +14,9 @@
   --btn-primary-hover: #67e8f9;
   --btn-primary-text: #042f2e;
   --btn-glow: rgba(34, 211, 238, 0.35);
+  --case-accent: rgba(167, 139, 250, 0.12);
+  --case-border: rgba(167, 139, 250, 0.35);
+  --case-text: #c4b5fd;
   --radius: 12px;
   --sans: "Inter", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -497,6 +500,196 @@ body.is-timeline-open {
 
 .mock-timeline-row span.active {
   background: #22d3ee;
+}
+
+.mock-cases-strip {
+  margin-top: 0.45rem;
+  font-size: 0.45rem;
+  color: #c4b5fd;
+  letter-spacing: 0.04em;
+}
+
+/* Support case examples */
+.cases-section {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.cases-header h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--case-text);
+}
+
+.cases-intro {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.accordion-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface-2);
+  transition: border-color 0.2s;
+}
+
+.accordion-item.is-open {
+  border-color: var(--border-hover);
+}
+
+.accordion-toggle {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.15rem 0.75rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.case-card {
+  border-color: var(--case-border);
+  background: linear-gradient(180deg, var(--case-accent) 0%, var(--surface-2) 40%);
+}
+
+.case-card.is-open {
+  border-color: rgba(167, 139, 250, 0.5);
+}
+
+.case-meta {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.case-id {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--case-text);
+  background: var(--surface);
+  border: 1px solid var(--case-border);
+  border-radius: 4px;
+  padding: 0.12rem 0.4rem;
+}
+
+.case-severity {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.case-title {
+  grid-column: 1;
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.35;
+}
+
+.accordion-body {
+  animation: fade-in 0.25s ease;
+}
+
+.accordion-body[hidden] {
+  display: none;
+}
+
+.case-body {
+  padding: 0 1rem 1rem;
+}
+
+.step-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.step-item {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.step-item.is-open {
+  border-color: var(--border-hover);
+}
+
+.step-toggle {
+  padding: 0.65rem 0.85rem;
+  grid-template-rows: auto;
+}
+
+.step-label {
+  grid-column: 1;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--case-text);
+}
+
+.step-body {
+  padding: 0 0.85rem 0.75rem;
+}
+
+.step-content {
+  font-size: 0.82rem;
+  color: var(--accent);
+  line-height: 1.65;
+  padding: 0.55rem 0.7rem;
+  background: var(--surface-2);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.accordion-toggle .chevron {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+  margin-top: -0.25rem;
+}
+
+.step-toggle .chevron {
+  grid-row: 1;
+  margin-top: 0;
+}
+
+.accordion-item.is-open > .accordion-toggle .chevron {
+  transform: rotate(-135deg);
+  margin-top: 0.15rem;
+}
+
+.step-item.is-open > .step-toggle .chevron {
+  margin-top: 0.1rem;
 }
 
 .git-footer {

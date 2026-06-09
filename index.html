@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hi Harveen — v1.2</title>
+    <title>Hi Harveen — v1.3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=1.3" />
   </head>
   <body>
     <div class="grid-bg" aria-hidden="true"></div>
 
     <main class="page" id="page">
       <section class="hero">
-        <p class="eyebrow">v1.2</p>
+        <p class="eyebrow">v1.3</p>
         <h1 class="greeting">
           Hi <span class="name" id="greeting-name">Harveen</span>
         </h1>
@@ -47,17 +47,28 @@
             <div class="iteration-list" id="iteration-list"></div>
           </div>
 
+          <section class="cases-section" aria-labelledby="cases-heading">
+            <header class="cases-header">
+              <h2 id="cases-heading">Support case examples</h2>
+              <p class="cases-intro">
+                Real-world troubleshooting flows — expand a case, then walk through Ticket → Repro →
+                Root cause → Reply.
+              </p>
+            </header>
+            <div class="cases-list" id="cases-list"></div>
+          </section>
+
           <footer class="git-footer">
             <span class="tag">Git</span>
             <p>
-              Commit as <code>v1.2 - horizontal timeline</code>, tag <code>v1.2</code>. Compare
-              against snapshots in <code>versions/v1.0/</code> and <code>versions/v1.1/</code>.
+              Commit as <code>v1.3 - support cases</code>, tag <code>v1.3</code>. Snapshot at
+              <code>versions/v1.2/</code>.
             </p>
           </footer>
         </div>
       </section>
     </main>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=1.3"></script>
   </body>
 </html>

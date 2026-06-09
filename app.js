@@ -54,7 +54,7 @@ const ITERATIONS = [
   },
   {
     version: "v1.2",
-    label: "Current",
+    label: "Layout",
     title: "Horizontal timeline + bold CTA",
     prompt: "“Make the button pop more, show version boxes left-to-right chronologically — v1.2.”",
     changes: [
@@ -64,9 +64,74 @@ const ITERATIONS = [
       "Staggered reveal animation per version",
     ],
     preview: "v12",
+    snapshot: "versions/v1.2/",
+  },
+  {
+    version: "v1.3",
+    label: "Current",
+    title: "Support case examples",
+    prompt: "“Add a second section below the timeline — Support case examples with Ticket → Repro → Root cause → Reply accordions.”",
+    changes: [
+      "Distinct section under the version timeline",
+      "Expandable support case cards",
+      "Four-step accordion flow per case",
+      "Cases themed around real deploy & cache issues",
+    ],
+    preview: "v13",
     current: true,
   },
 ];
+
+const SUPPORT_CASES = [
+  {
+    id: "GSG-1042",
+    title: "GitHub Pages still shows old version after push",
+    severity: "P2",
+    steps: {
+      ticket: {
+        label: "Ticket",
+        content: `Customer pushed v1.2 to main and sees the commit in GitHub Desktop history, but the live site at gsg-omez.github.io still shows the v1.1 layout and ghost button.`,
+      },
+      repro: {
+        label: "Repro",
+        content: `1. Push commit f3f6273 to main\n2. Open live URL in same browser session used during v1.1 testing\n3. Observe v1.2 badge in HTML but v1.1 styles and accordion behavior\n4. Hard refresh (Ctrl+Shift+R) → site updates correctly`,
+      },
+      rootCause: {
+        label: "Root cause",
+        content: `Browser cached style.css and app.js from v1.1. index.html updated (showing v1.2 badge) but linked assets were served from cache — a classic split-brain deploy symptom on static GitHub Pages sites.`,
+      },
+      reply: {
+        label: "Reply",
+        content: `Hi — your push succeeded and GitHub Pages is serving v1.2. The mismatch is browser cache. Please hard-refresh (Ctrl+Shift+R) or try an incognito window. We've added ?v=1.2 cache-busting to asset URLs to prevent this going forward. Let us know if it persists after that.`,
+      },
+    },
+  },
+  {
+    id: "GSG-1038",
+    title: "Timeline panel not using full width on mobile",
+    severity: "P3",
+    steps: {
+      ticket: {
+        label: "Ticket",
+        content: `On mobile Safari, opening "Click me to show how I was made" shows version cards stacked vertically instead of the horizontal scroll timeline seen on desktop.`,
+      },
+      repro: {
+        label: "Repro",
+        content: `1. Open site on iPhone 14 / Safari\n2. Tap the cyan CTA button\n3. Version cards wrap vertically — horizontal scroll track not obvious\n4. Desktop Chrome at 1280px shows correct left-to-right flow`,
+      },
+      rootCause: {
+        label: "Root cause",
+        content: `Flex row layout with min-width cards requires explicit overflow-x on the track container. On narrow viewports the cards shrink-wrap when flex-basis isn't enforced and scroll affordance (scrollbar / swipe hint) is missing.`,
+      },
+      reply: {
+        label: "Reply",
+        content: `Thanks for the report. The timeline track uses horizontal scroll — on mobile, swipe left-to-right inside the version row to browse chronologically. We're evaluating a clearer scroll hint for v1.4. Desktop layout is unaffected.`,
+      },
+    },
+  },
+];
+
+const STEP_ORDER = ["ticket", "repro", "rootCause", "reply"];
 
 const PREVIEWS = {
   v01: `
@@ -119,11 +184,25 @@ const PREVIEWS = {
         </div>
       </div>
     </div>`,
+  v13: `
+    <div class="mock mock-dark">
+      <div class="mock-grid"></div>
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono">v1.3</span>
+        <div class="mock-title dark">Hi <em>Harveen</em></div>
+        <div class="mock-btn accent">Click me to show how I was made</div>
+        <div class="mock-timeline-row">
+          <span></span><span></span><span></span><span></span><span></span><span class="active"></span>
+        </div>
+        <div class="mock-cases-strip">Support cases ↓</div>
+      </div>
+    </div>`,
 };
 
 const revealBtn = document.getElementById("reveal-btn");
 const aboutPanel = document.getElementById("about-panel");
 const iterationList = document.getElementById("iteration-list");
+const casesList = document.getElementById("cases-list");
 const page = document.getElementById("page");
 
 function escapeHtml(text) {
@@ -132,6 +211,10 @@ function escapeHtml(text) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function formatContent(text) {
+  return escapeHtml(text).replace(/\n/g, "<br>");
 }
 
 function renderIterations() {
@@ -167,6 +250,56 @@ function renderIterations() {
   ).join("");
 }
 
+function renderCaseSteps(caseItem) {
+  return STEP_ORDER.map(
+    (key) => `
+    <div class="accordion-item step-item">
+      <button type="button" class="accordion-toggle step-toggle" aria-expanded="false">
+        <span class="step-label">${escapeHtml(caseItem.steps[key].label)}</span>
+        <span class="chevron" aria-hidden="true"></span>
+      </button>
+      <div class="accordion-body step-body" hidden>
+        <div class="step-content">${formatContent(caseItem.steps[key].content)}</div>
+      </div>
+    </div>`
+  ).join("");
+}
+
+function renderSupportCases() {
+  casesList.innerHTML = SUPPORT_CASES.map(
+    (caseItem) => `
+    <article class="accordion-item case-card">
+      <button type="button" class="accordion-toggle case-toggle" aria-expanded="false">
+        <div class="case-meta">
+          <span class="case-id">${escapeHtml(caseItem.id)}</span>
+          <span class="case-severity">${escapeHtml(caseItem.severity)}</span>
+        </div>
+        <h3 class="case-title">${escapeHtml(caseItem.title)}</h3>
+        <span class="chevron" aria-hidden="true"></span>
+      </button>
+      <div class="accordion-body case-body" hidden>
+        <div class="step-flow">
+          ${renderCaseSteps(caseItem)}
+        </div>
+      </div>
+    </article>`
+  ).join("");
+}
+
+function bindAccordions(root) {
+  root.querySelectorAll(".accordion-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".accordion-item");
+      const body = item.querySelector(":scope > .accordion-body");
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      body.hidden = isOpen;
+      item.classList.toggle("is-open", !isOpen);
+    });
+  });
+}
+
 revealBtn.addEventListener("click", () => {
   const isOpen = revealBtn.getAttribute("aria-expanded") === "true";
 
@@ -181,3 +314,5 @@ revealBtn.addEventListener("click", () => {
 });
 
 renderIterations();
+renderSupportCases();
+bindAccordions(casesList);

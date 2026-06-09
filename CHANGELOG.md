@@ -2,6 +2,13 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.3 — Support case examples
+- New section below version timeline: **Support case examples**
+- Expandable case cards with Ticket → Repro → Root cause → Reply accordions
+- Purple accent distinguishes cases from the cyan timeline
+- Two sample cases based on real deploy & mobile issues
+- v1.2 snapshot preserved in `versions/v1.2/`
+
 ## v1.2 — Horizontal timeline + bold CTA
 - Cyan accent button with glow — clearly distinct from dark background
 - Version boxes flow left → right in chronological order
