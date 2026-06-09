@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hi Harveen — v1.1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">v1.1</p>
+        <h1 class="greeting">
+          Hi <span class="name" id="greeting-name">Harveen</span>
+        </h1>
+      </section>
+
+      <button
+        type="button"
+        class="btn"
+        id="reveal-btn"
+        aria-expanded="false"
+        aria-controls="about-panel"
+      >
+        Click me to show how I was made
+      </button>
+
+      <section class="about-panel" id="about-panel" hidden>
+        <div class="about-inner">
+          <header class="about-header">
+            <h2>Built organically with Cursor</h2>
+            <p class="about-intro">
+              Each version below is a real step in this project&apos;s history. Use GitHub Desktop to
+              commit, tag, and push as you grow the site.
+            </p>
+          </header>
+
+          <div class="iteration-list" id="iteration-list"></div>
+
+          <footer class="git-footer">
+            <span class="tag">Git</span>
+            <p>
+              In GitHub Desktop: open this folder, commit as
+              <code>v1.1 - H + iteration</code>, then create a tag
+              <code>v1.1</code>. Compare against the snapshot in
+              <code>versions/v1.0/</code>.
+            </p>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
