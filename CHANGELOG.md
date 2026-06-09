@@ -2,6 +2,9 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.8.1 — Blended V cat mascot
+- Replaced baked-in PNG with transparent SVG tinted to match glass pill and purple theme
+
 ## v1.8 — Corner-click easter egg
 - Sequence: upper-left → bottom-right → upper-right → open TSE Profile → click cat on V
 - Unlocks `easter-egg.html` — minimalist split-layout portfolio mimicking norhanelbe.com structure

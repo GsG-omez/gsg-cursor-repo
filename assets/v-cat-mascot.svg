@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 44" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="vFill" x1="10" y1="8" x2="28" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#93c5fd"/>
+      <stop offset="0.5" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="catFur" x1="14" y1="2" x2="30" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fcd9b6"/>
+      <stop offset="0.4" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#c2410c"/>
+    </linearGradient>
+    <radialGradient id="catAmbient" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0a0a0f" stop-opacity="0.28"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Cyan V -->
+  <path
+    d="M11 35.5 L19.5 9 L28 35.5"
+    stroke="url(#vFill)"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M13 34 L19.5 12 L26 34"
+    stroke="rgba(255,255,255,0.1)"
+    stroke-width="0.8"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <!-- Tail coiled on left stroke -->
+  <path
+    d="M13.5 31 C11.5 27 11 23 12.5 19 C13.5 16.5 15.5 15 16.5 17 C17 19 15.5 21.5 14 24 C13 26.5 13 29 13.5 31"
+    stroke="#d97706"
+    stroke-width="2"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.8"
+  />
+
+  <!-- Body behind left leg -->
+  <ellipse cx="21" cy="25" rx="6.5" ry="8" fill="url(#catFur)" opacity="0.88"/>
+  <ellipse cx="21" cy="25" rx="6.5" ry="8" fill="url(#catAmbient)"/>
+
+  <!-- Paws gripping top of V -->
+  <ellipse cx="15.5" cy="15" rx="2" ry="2.6" fill="#fdba74" opacity="0.9"/>
+  <ellipse cx="25.5" cy="15" rx="2" ry="2.6" fill="#fdba74" opacity="0.9"/>
+
+  <!-- Head peeking over -->
+  <ellipse cx="20.5" cy="11.5" rx="8" ry="7" fill="url(#catFur)"/>
+  <ellipse cx="20.5" cy="12" rx="8" ry="7" fill="url(#catAmbient)"/>
+
+  <!-- Tabby marks -->
+  <path d="M15.5 7.5 L17 9.5 M24.5 7.5 L23 9.5 M20.5 6 L20.5 8.5" stroke="#b45309" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Ears -->
+  <path d="M13.5 5.5 L15.5 1.5 L17 5.5 Z" fill="#ea580c"/>
+  <path d="M24 5.5 L26 1.5 L27.5 5.5 Z" fill="#ea580c"/>
+  <path d="M14.5 4.5 L15.5 2.5 L16.5 4.5 Z" fill="#fde68a" opacity="0.65"/>
+  <path d="M24.5 4.5 L25.5 2.5 L26.5 4.5 Z" fill="#fde68a" opacity="0.65"/>
+
+  <!-- Eyes -->
+  <ellipse cx="17.5" cy="11.5" rx="1.4" ry="2" fill="#292524"/>
+  <ellipse cx="23.5" cy="11.5" rx="1.4" ry="2" fill="#292524"/>
+  <circle cx="17.8" cy="10.8" r="0.4" fill="#fff" opacity="0.8"/>
+  <circle cx="23.8" cy="10.8" r="0.4" fill="#fff" opacity="0.8"/>
+
+  <!-- Nose -->
+  <path d="M20.5 13.8 L19.6 14.8 H21.4 Z" fill="#9a3412"/>
+
+  <!-- Whiskers -->
+  <path d="M12 11.5 H8.5 M12 13 H8 M29 11.5 H32.5 M29 13 H32" stroke="rgba(253,230,138,0.35)" stroke-width="0.35" stroke-linecap="round"/>
+</svg>
