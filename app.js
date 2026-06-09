@@ -83,13 +83,13 @@ const ITERATIONS = [
   {
     version: "v1.4",
     label: "Current",
-    title: "Built with Cursor AI",
-    prompt: "“Rebrand to Built with Cursor AI, subtle AI background, shimmer version badge, sharper engaging buttons.”",
+    title: "Built with Cursor AI + toggle arrows",
+    prompt: "“Rebrand, AI background, stick figure on V, arrow indicators on every toggle button.”",
     changes: [
       "Hero: Built with Cursor AI",
-      "Subtle animated AI / tech background",
-      "Shimmering version badge",
-      "Less-rounded buttons with richer hover & click",
+      "Stick figure sitting on the V in v1.4",
+      "› / ⌄ arrows on all buttons when open vs closed",
+      "Sharper buttons with hover & click feedback",
     ],
     preview: "v14",
     current: true,
@@ -146,6 +146,9 @@ const SUPPORT_CASES = [
 ];
 
 const STEP_ORDER = ["ticket", "repro", "rootCause", "reply"];
+
+/** Reusable arrow for all toggle buttons — closed: › right, open: ⌄ down */
+const TOGGLE_ARROW = '<span class="toggle-arrow" aria-hidden="true"></span>';
 
 const PREVIEWS = {
   v01: `
@@ -278,8 +281,8 @@ function renderCaseSteps(caseItem) {
     (key) => `
     <div class="accordion-item step-item">
       <button type="button" class="accordion-toggle step-toggle" aria-expanded="false">
+        ${TOGGLE_ARROW}
         <span class="step-label">${escapeHtml(caseItem.steps[key].label)}</span>
-        <span class="chevron" aria-hidden="true"></span>
       </button>
       <div class="accordion-body step-body" hidden>
         <div class="step-content">${formatContent(caseItem.steps[key].content)}</div>
@@ -293,12 +296,14 @@ function renderSupportCases() {
     (caseItem) => `
     <article class="accordion-item case-card">
       <button type="button" class="accordion-toggle case-toggle" aria-expanded="false">
-        <div class="case-meta">
-          <span class="case-id">${escapeHtml(caseItem.id)}</span>
-          <span class="case-severity">${escapeHtml(caseItem.severity)}</span>
+        ${TOGGLE_ARROW}
+        <div class="case-toggle-body">
+          <div class="case-meta">
+            <span class="case-id">${escapeHtml(caseItem.id)}</span>
+            <span class="case-severity">${escapeHtml(caseItem.severity)}</span>
+          </div>
+          <h3 class="case-title">${escapeHtml(caseItem.title)}</h3>
         </div>
-        <h3 class="case-title">${escapeHtml(caseItem.title)}</h3>
-        <span class="chevron" aria-hidden="true"></span>
       </button>
       <div class="accordion-body case-body" hidden>
         <div class="step-flow">

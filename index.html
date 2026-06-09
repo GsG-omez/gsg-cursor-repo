@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=1.4" />
+    <link rel="stylesheet" href="style.css?v=1.4.2" />
   </head>
   <body>
     <div class="ai-bg" aria-hidden="true">
@@ -23,7 +23,17 @@
 
     <main class="page" id="page">
       <section class="hero">
-        <p class="eyebrow eyebrow-shimmer">v1.4</p>
+        <p class="eyebrow eyebrow-shimmer">
+          <span class="version-live">
+            <span class="version-perch">
+              <span class="stick-sitter" aria-hidden="true">
+                <span class="sitter-head"></span>
+                <span class="sitter-torso"></span>
+              </span>
+              <span class="v-cap">V</span>
+            </span><span class="version-num">1.4</span>
+          </span>
+        </p>
         <h1 class="greeting">
           Built with <span class="name">Cursor AI</span>
         </h1>
@@ -37,7 +47,8 @@
           aria-expanded="false"
           aria-controls="about-panel"
         >
-          Click me to show how I was made
+          <span class="toggle-arrow" aria-hidden="true"></span>
+          <span class="btn-label">Click me to show how I was made</span>
         </button>
 
         <button
@@ -47,7 +58,8 @@
           aria-expanded="false"
           aria-controls="cases-panel"
         >
-          Support case examples
+          <span class="toggle-arrow" aria-hidden="true"></span>
+          <span class="btn-label">Support case examples</span>
         </button>
       </div>
 
@@ -89,6 +101,6 @@
       </section>
     </main>
 
-    <script src="app.js?v=1.4"></script>
+    <script src="app.js?v=1.4.2"></script>
   </body>
 </html>

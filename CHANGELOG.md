@@ -6,7 +6,9 @@ All notable changes to this project — built organically with Cursor.
 - Hero renamed to **Built with Cursor AI**
 - Subtle AI atmosphere: drifting orbs, node mesh, softened grid
 - Version badge shimmer + gentle float animation
-- Sharper buttons (6px radius) with lift & press interactions
+- Sharper buttons with lift & press interactions
+- Stick figure perched on the **V** in the live version badge
+- Universal **› / ⌄** toggle arrows on all buttons & accordions
 
 ## v1.3 — Support case examples
 - New section below version timeline: **Support case examples**
