@@ -2,10 +2,14 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.9 — Easter egg via Verified reviews
+- Removed corner-click + cat sequence
+- Click all three **Verified** labels in TSE Profile customer reviews to unlock `easter-egg.html`
+
 ## v1.8.1 — Blended V cat mascot
 - Replaced baked-in PNG with transparent SVG tinted to match glass pill and purple theme
 
-## v1.8 — Corner-click easter egg
+## v1.8 — Corner-click easter egg (superseded in v1.9)
 - Sequence: upper-left → bottom-right → upper-right → open TSE Profile → click cat on V
 - Unlocks `easter-egg.html` — minimalist split-layout portfolio mimicking norhanelbe.com structure
 

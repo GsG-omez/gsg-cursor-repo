@@ -1,74 +1,31 @@
 (function () {
-  const STEPS = ["tl", "br", "tr", "stats", "cat"];
-  let step = 0;
-  let resetTimer = null;
+  const triggers = document.querySelectorAll("[data-egg-verified]");
+  const clicked = new Set();
 
-  function updateAwaiting() {
-    document.body.classList.remove(
-      "egg-await-tl",
-      "egg-await-br",
-      "egg-await-tr",
-      "egg-step-cat"
-    );
+  function tryActivate(trigger) {
+    const id = trigger.dataset.eggVerified;
+    if (!id || clicked.has(id)) return;
 
-    const next = STEPS[step];
-    if (next === "tl") document.body.classList.add("egg-await-tl");
-    if (next === "br") document.body.classList.add("egg-await-br");
-    if (next === "tr") document.body.classList.add("egg-await-tr");
-    if (next === "cat") document.body.classList.add("egg-step-cat");
-  }
+    clicked.add(id);
+    trigger.classList.add("egg-verified-tapped");
 
-  function resetSequence() {
-    step = 0;
-    updateAwaiting();
-  }
-
-  function scheduleReset() {
-    clearTimeout(resetTimer);
-    resetTimer = setTimeout(resetSequence, 12000);
-  }
-
-  function advance(expected) {
-    if (STEPS[step] !== expected) {
-      resetSequence();
-      return;
-    }
-
-    step += 1;
-    scheduleReset();
-    updateAwaiting();
-
-    if (step === STEPS.length) {
+    if (clicked.size >= triggers.length) {
       window.location.href = "easter-egg.html";
     }
   }
 
-  document.querySelectorAll("[data-egg-zone]").forEach((zone) => {
-    zone.addEventListener("click", (event) => {
-      event.stopPropagation();
-      advance(zone.dataset.eggZone);
-    });
-  });
-
-  const credibilityBtn = document.getElementById("credibility-btn");
-  if (credibilityBtn) {
-    credibilityBtn.addEventListener("click", () => {
-      const willOpen = credibilityBtn.getAttribute("aria-expanded") !== "true";
-      if (willOpen) {
-        advance("stats");
-      }
-    });
-  }
-
-  const catTrigger = document.getElementById("version-cat-trigger");
-  if (catTrigger) {
-    catTrigger.addEventListener("click", (event) => {
-      if (step !== 4) return;
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      advance("cat");
+      tryActivate(trigger);
     });
-  }
 
-  updateAwaiting();
+    trigger.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        tryActivate(trigger);
+      }
+    });
+  });
 })();

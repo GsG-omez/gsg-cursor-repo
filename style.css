@@ -234,12 +234,6 @@ body.is-timeline-open {
   user-select: none;
 }
 
-body.egg-step-cat .version-v-art {
-  opacity: 1;
-  filter: saturate(0.9) brightness(1) contrast(1.02)
-    drop-shadow(0 0 6px rgba(249, 115, 22, 0.25));
-}
-
 .version-num {
   font-family: var(--mono);
   font-size: 0.95rem;
@@ -280,53 +274,26 @@ body.egg-step-cat .version-v-art {
   line-height: 1.55;
 }
 
-/* Easter egg — corner tap zones (low z-index so UI stays clickable) */
-.egg-zone {
-  position: fixed;
-  z-index: 5;
-  width: 36px;
-  height: 36px;
-  opacity: 0;
-  cursor: default;
-  pointer-events: none;
-}
-
-body.egg-await-tl .egg-zone-tl,
-body.egg-await-br .egg-zone-br,
-body.egg-await-tr .egg-zone-tr {
-  pointer-events: auto;
-}
-
-.egg-zone-tl {
-  top: 0;
-  left: 0;
-}
-
-.egg-zone-tr {
-  top: 0;
-  right: 0;
-}
-
-.egg-zone-br {
-  right: 0;
-  bottom: 0;
-}
-
-body.egg-step-cat #version-cat-trigger {
+/* Easter egg — Verified triggers in stats panel */
+.egg-verified-hit {
+  font: inherit;
+  font-style: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
+  border-radius: 2px;
 }
 
-body.egg-step-cat #version-cat-trigger::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.35);
-  pointer-events: none;
+.egg-verified-hit:focus-visible {
+  outline: 1px solid rgba(167, 139, 250, 0.45);
+  outline-offset: 2px;
 }
 
-#version-cat-trigger {
-  position: relative;
+.egg-verified-hit.egg-verified-tapped {
+  color: rgba(196, 181, 253, 0.95);
 }
 
 .eyebrow {
