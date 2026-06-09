@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connect — Built with Cursor AI</title>
+    <title>Connect — Technical Support Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=1.6" />
+    <link rel="stylesheet" href="style.css?v=1.7" />
   </head>
   <body>
     <div class="ai-bg" aria-hidden="true">
@@ -27,24 +27,46 @@
 
         <header class="contact-header">
           <h1>Connect with me</h1>
-          <p>Send a message — include your email so I know how to reach you.</p>
+          <p>
+            Send a thoughtful message with a real email address. Submissions are verified and
+            spam-filtered before delivery.
+          </p>
         </header>
+
+        <div class="contact-config-warning" id="contact-config-warning" hidden role="alert">
+          Form delivery isn't configured yet. Set your email and Cloudflare Turnstile site key in
+          <code>contact-config.js</code>, then redeploy.
+        </div>
 
         <div class="contact-success" id="contact-success" hidden role="status">
           Message sent. Thanks for reaching out — I'll get back to you soon.
         </div>
 
-        <form
-          class="contact-form"
-          id="contact-form"
-          action="https://formsubmit.co/gsgcursor-connect@mailinator.com"
-          method="POST"
-        >
-          <input type="hidden" name="_subject" value="New message from portfolio site" />
-          <input type="hidden" name="_captcha" value="false" />
+        <div class="contact-error" id="contact-error" hidden role="alert"></div>
+
+        <form class="contact-form" id="contact-form" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Portfolio contact — verified submission" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" id="form-next" value="" />
-          <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" hidden />
+
+          <input
+            type="text"
+            name="company"
+            class="form-honey"
+            data-honeypot
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <input
+            type="text"
+            name="website"
+            class="form-honey"
+            data-honeypot
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
 
           <div class="form-field">
             <label for="contact-email">Your email</label>
@@ -52,10 +74,13 @@
               type="email"
               id="contact-email"
               name="email"
-              placeholder="you@example.com"
+              placeholder="name@company.com"
               required
               autocomplete="email"
+              inputmode="email"
+              spellcheck="false"
             />
+            <span class="field-hint">Work or personal inbox — disposable addresses are blocked.</span>
           </div>
 
           <div class="form-field">
@@ -65,26 +90,24 @@
               name="message"
               placeholder="What would you like to discuss?"
               required
+              minlength="24"
+              maxlength="2000"
             ></textarea>
+            <span class="field-hint">Minimum 24 characters. No link spam.</span>
           </div>
 
-          <button type="submit" class="contact-submit">Send message</button>
-        </form>
+          <div class="turnstile-wrap">
+            <div id="turnstile-mount" class="turnstile-mount"></div>
+            <p class="security-note">
+              Protected by Cloudflare Turnstile, honeypot traps, MX verification, and rate limiting.
+            </p>
+          </div>
 
-        <p class="contact-note">
-          Demo inbox: messages go to
-          <code>gsgcursor-connect@mailinator.com</code> — view them at
-          <a
-            href="https://www.mailinator.com/v4/public/inboxes.jsp?to=gsgcursor-connect"
-            target="_blank"
-            rel="noopener noreferrer"
-            >mailinator.com</a
-          >
-          (public test inbox, no login required).
-        </p>
+          <button type="submit" class="contact-submit" id="contact-submit">Send message</button>
+        </form>
       </div>
     </main>
 
-    <script src="contact.js?v=1.6"></script>
+    <script type="module" src="contact.js?v=1.7"></script>
   </body>
 </html>

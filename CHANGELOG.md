@@ -2,6 +2,12 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.7 — TSE theme, secure contact, reference cat
+- Purple glassmorphism theme aligned with TSE portfolio reference
+- TSE profile panel: skills, experience, tools, achievements
+- Version badge uses reference cat artwork; version number subtle hop animation
+- Contact form hardened: Turnstile, MX verification, disposable blocklist, honeypots, rate limit
+
 ## v1.6 — Connect page + orange cat
 - **Connect with me** button (orange) links to `contact.html`
 - Contact form sends to demo Mailinator inbox (`gsgcursor-connect@mailinator.com`)
