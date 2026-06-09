@@ -112,48 +112,54 @@ const ITERATIONS = [
 
 const SUPPORT_CASES = [
   {
-    id: "CASE-1042",
-    title: "Live site still shows old version after push",
+    id: "CASE-RUBY-LOG",
+    title: "Parsing variable-structure Ruby application logs",
     severity: "P2",
     steps: {
       ticket: {
         label: "Ticket",
-        content: `Customer pushed a new release to main and sees the commit in their git history, but the live static site still shows the previous layout and styles.`,
+        content: `Customer needed Ruby/Rails application logs broken into structured, searchable fields. The meaningful data lived in a trailing free-form key=value payload whose shape changed log-to-log — fields appeared and disappeared (extra location=, empty ip_address=), creating too many permutations for static grok patterns.
+
+Additional blockers:
+• user_agent values contained spaces and special characters, breaking naive key=value splits
+• A global parsing rule was interfering and generating _grokparsefailure noise
+
+Outcome target: fully structured, queryable logs. Customer later rated the interaction extremely satisfied, pleasant, and fast.`,
       },
       repro: {
         label: "Repro",
-        content: `1. Push latest commit to main\n2. Open live URL in same browser session used during prior testing\n3. Observe updated HTML but stale CSS/JS behavior\n4. Hard refresh (Ctrl+Shift+R) → site updates correctly`,
+        content: `1. Ingest sample Ruby logs where message_data ends with variable key=value pairs
+2. Observe fields shift between entries — sometimes 5 KV pairs, sometimes 15
+3. Run naive KV on raw payload → user_agent bleeds into adjacent fields
+4. Note _grokparsefailure events from a global rule touching the same pipeline
+5. Confirm logs without UUID/request ID fail the single-pattern Ruby parser`,
       },
       rootCause: {
         label: "Root cause",
-        content: `Browser cached style.css and app.js from the prior release. index.html updated but linked assets were served from cache — a common split-brain symptom on static hosting.`,
+        content: `Static grok alone was too brittle for a payload with dynamic keys. KV was the right adaptive parser, but only after isolating user_agent (space-heavy) and params before KV ran.
+
+Contributing factors:
+• Global rule conflict polluted the baseline
+• user_agent=... params=... ordering caused regex bleed when extracted loosely
+• Base Ruby parser had only one grok pattern — lines without request UUID were silently dropped`,
       },
       reply: {
         label: "Reply",
-        content: `Hi — your push succeeded and the host is serving the new release. The mismatch is browser cache. Please hard-refresh (Ctrl+Shift+R) or try an incognito window. We've added cache-busting query params on asset URLs to reduce this going forward.`,
-      },
-    },
-  },
-  {
-    id: "CASE-1038",
-    title: "Timeline panel layout on mobile",
-    severity: "P3",
-    steps: {
-      ticket: {
-        label: "Ticket",
-        content: `On mobile Safari, opening the timeline panel shows version cards stacked vertically instead of the horizontal scroll seen on desktop.`,
-      },
-      repro: {
-        label: "Repro",
-        content: `1. Open site on a mobile device\n2. Tap the timeline button\n3. Version cards wrap vertically — horizontal scroll track not obvious\n4. Desktop viewport shows correct left-to-right flow`,
-      },
-      rootCause: {
-        label: "Root cause",
-        content: `Flex row layout with min-width cards requires explicit overflow-x on the track container. On narrow viewports scroll affordance is easy to miss.`,
-      },
-      reply: {
-        label: "Reply",
-        content: `Thanks for the report. The timeline track uses horizontal scroll — on mobile, swipe left-to-right inside the version row to browse chronologically. Desktop layout is unaffected.`,
+        content: `Approach delivered:
+1. Disabled interfering global rule for a clean test baseline
+2. Grok-extracted user_agent + params before KV
+3. gsub stripped the user_agent segment from message_data
+4. KV filter parsed the cleaned payload adaptively
+5. Conditional wrapper — logic runs only when user_agent= is present
+6. Added fallback Ruby grok pattern for logs without request UUID
+
+Key exchange (sanitized):
+Support: Reviewing your case now — KV will parse KEY=VALUE segments once we handle user_agent spacing.
+Customer: Can we extract user_agent first, then KV the rest?
+Support: Shared grok → gsub → kv pipeline inside a conditional. Added second Ruby parser pattern for non-UUID lines.
+Customer: Looking really good. Thank you!
+
+Customer confirmed parsing working across variable log shapes.`,
       },
     },
   },
