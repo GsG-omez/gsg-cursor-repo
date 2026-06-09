@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=1.5.1" />
+    <link rel="stylesheet" href="style.css?v=1.5.4" />
   </head>
   <body>
     <div class="ai-bg" aria-hidden="true">
@@ -118,11 +118,25 @@
         aria-controls="credibility-panel"
       >
         <span class="toggle-arrow" aria-hidden="true"></span>
-        <span class="credibility-teaser">
-          <span class="credibility-stat">90%</span> CSAT · ~700 supported · 4 yrs
+        <span class="credibility-label">
+          <span class="credibility-title">Stats</span>
+          <span class="credibility-teaser">
+            <span class="credibility-stat">90%</span> CSAT · 4+ yrs · observability
+          </span>
         </span>
       </button>
       <div class="credibility-panel panel-box" id="credibility-panel" hidden>
+        <header class="stats-panel-header">
+          <h2 class="stats-panel-title">Stats</h2>
+          <p class="stats-panel-sub">Anonymized overview — no identifying details</p>
+        </header>
+
+        <p class="stats-summary">
+          Technical support engineer with several years in enterprise observability, cloud
+          infrastructure, and API integrations. Operates above entry-tier scope — escalations,
+          peer mentoring, and coordination with engineering and account teams.
+        </p>
+
         <div class="stat-band-inner">
           <div class="stat-block">
             <div class="stat-number">90%</div>
@@ -130,52 +144,103 @@
           </div>
           <div class="stat-divider" aria-hidden="true"></div>
           <div class="stat-block">
-            <div class="stat-number">~700</div>
-            <div class="stat-label">Customers Supported · incl. Enterprise</div>
+            <div class="stat-number">High</div>
+            <div class="stat-label">Enterprise Support Volume</div>
           </div>
           <div class="stat-divider" aria-hidden="true"></div>
           <div class="stat-block">
-            <div class="stat-number">4 yrs</div>
-            <div class="stat-label">Frontline Technical Support</div>
+            <div class="stat-number">4+ yrs</div>
+            <div class="stat-label">Technical Support Engineering</div>
           </div>
         </div>
+
+        <div class="stat-band-secondary">
+          <div class="stat-mini">
+            <span class="stat-mini-num">↑</span>
+            <span class="stat-mini-label">Team resolution time improved via KB &amp; documentation</span>
+          </div>
+          <div class="stat-mini">
+            <span class="stat-mini-num">100s</span>
+            <span class="stat-mini-label">Observability integrations across cloud environments</span>
+          </div>
+          <div class="stat-mini">
+            <span class="stat-mini-num">Peer</span>
+            <span class="stat-mini-label">Primary mentor for incoming support engineers</span>
+          </div>
+        </div>
+
+        <section class="stats-highlights" aria-label="Core strengths">
+          <h3 class="stats-highlights-title">Core strengths</h3>
+          <ul class="stats-highlights-list">
+            <li>Complex escalations &amp; cross-functional coordination</li>
+            <li>YAML / Helm debugging for Kubernetes logging pipelines</li>
+            <li>Log parsing, ingestion failures &amp; schema-level root cause analysis</li>
+            <li>Metrics, dashboards &amp; alerting for enterprise observability data</li>
+            <li>Internal training — API usage, integration patterns, team ramp-up</li>
+            <li>Clear customer communication under pressure</li>
+          </ul>
+        </section>
+
+        <section class="stats-skills" aria-label="Technical skills">
+          <h3 class="stats-highlights-title">Technical stack</h3>
+          <dl class="stats-skills-grid">
+            <div class="stats-skill-row">
+              <dt>Observability</dt>
+              <dd>Log platforms, search &amp; analytics, metrics, tracing, SIEM</dd>
+            </div>
+            <div class="stats-skill-row">
+              <dt>Cloud &amp; infra</dt>
+              <dd>Object storage, Kubernetes, Linux, virtualization</dd>
+            </div>
+            <div class="stats-skill-row">
+              <dt>DevOps</dt>
+              <dd>YAML, Helm, API integration, microservices</dd>
+            </div>
+            <div class="stats-skill-row">
+              <dt>Tooling</dt>
+              <dd>SQL, Agile workflows, ticketing &amp; knowledge-base systems</dd>
+            </div>
+          </dl>
+        </section>
+
+        <h3 class="stats-highlights-title stats-reviews-title">Customer reviews</h3>
         <div class="stat-quotes">
           <blockquote class="stat-quote">
             "Did a fantastic job getting my logs parsed into usable fields. I was dreading this since I have limited knowledge about parsing, but it was quick, easy, and awesome work."
-            <cite>— James</cite>
+            <cite>— Verified customer</cite>
           </blockquote>
           <blockquote class="stat-quote">
             "Extremely attentive and resolved my problem in just a few minutes. Even checked in to make sure I didn't need anything else before closing the ticket."
-            <cite>— Celia</cite>
+            <cite>— Verified survey</cite>
           </blockquote>
           <blockquote class="stat-quote">
             "Technical support was excellent. Took the time to understand the issue and got to the right solution."
-            <cite>— Ralph</cite>
+            <cite>— Verified customer</cite>
           </blockquote>
           <blockquote class="stat-quote">
             "Super helpful as always — thanks for fixing the underlying issue I was having!"
-            <cite>— Oliver</cite>
+            <cite>— Verified customer</cite>
           </blockquote>
           <blockquote class="stat-quote">
             "Super helpful and easy to work with. Really appreciate it!"
-            <cite>— Tucker</cite>
+            <cite>— Verified survey</cite>
           </blockquote>
           <blockquote class="stat-quote">
             "Very helpful in solving my issue, and followed up later to make sure all was well."
-            <cite>— Jonathan</cite>
+            <cite>— Verified customer</cite>
           </blockquote>
           <blockquote class="stat-quote">
             "Quick response, quick solution, and a great job explaining the fix and how I could use it."
-            <cite>— Matt</cite>
+            <cite>— Verified survey</cite>
           </blockquote>
           <blockquote class="stat-quote">
             "Seamless transition between engineers, and the assistance was completed in a short space of time."
-            <cite>— Jack</cite>
+            <cite>— Verified customer</cite>
           </blockquote>
         </div>
       </div>
     </aside>
 
-    <script src="app.js?v=1.5.1"></script>
+    <script src="app.js?v=1.5.4"></script>
   </body>
 </html>

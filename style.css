@@ -402,23 +402,54 @@ body.is-timeline-open {
 
 .credibility-toggle {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.55rem;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 0.45rem 0.65rem;
   background: rgba(9, 9, 11, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 4px;
   color: rgba(255, 255, 255, 0.28);
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-family: var(--panel);
   cursor: pointer;
   backdrop-filter: blur(6px);
+  text-align: left;
   transition:
     color 0.2s,
     border-color 0.2s,
     background 0.2s;
+}
+
+.credibility-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.credibility-title {
+  font-family: var(--panel);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.credibility-toggle:hover .credibility-title {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.credibility-toggle[aria-expanded="true"] .credibility-title {
+  color: rgba(103, 232, 249, 0.75);
+}
+
+.credibility-teaser {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+  color: inherit;
 }
 
 .credibility-toggle:hover {
@@ -449,8 +480,8 @@ body.is-timeline-open {
 }
 
 .credibility-panel {
-  width: min(320px, calc(100vw - 2rem));
-  max-height: min(70vh, 480px);
+  width: min(340px, calc(100vw - 2rem));
+  max-height: min(75vh, 520px);
   overflow-y: auto;
   padding: 1rem;
   border: 1px solid var(--border);
@@ -462,6 +493,141 @@ body.is-timeline-open {
 
 .credibility-panel[hidden] {
   display: none;
+}
+
+.stats-panel-header {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-panel-title {
+  margin: 0;
+  font-family: var(--panel);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.stats-panel-sub {
+  margin: 0.25rem 0 0;
+  font-family: var(--panel);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.stats-summary {
+  margin: 0 0 0.85rem;
+  font-family: var(--quote);
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.stat-band-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-mini {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-family: var(--panel);
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+.stat-mini-num {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(34, 211, 238, 0.65);
+  min-width: 2.5rem;
+}
+
+.stat-mini-label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.stats-skills {
+  margin: 0.75rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-skills-grid {
+  margin: 0;
+}
+
+.stats-skill-row {
+  margin-bottom: 0.5rem;
+}
+
+.stats-skill-row dt {
+  font-family: var(--panel);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(167, 139, 250, 0.75);
+  margin-bottom: 0.15rem;
+}
+
+.stats-skill-row dd {
+  margin: 0;
+  font-family: var(--panel);
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.45;
+}
+
+.stats-education {
+  margin: 0 0 0.85rem;
+  font-family: var(--panel);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.stats-reviews-title {
+  margin-bottom: 0.5rem;
+}
+
+.stats-highlights {
+  margin: 0.75rem 0;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-highlights-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--panel);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stats-highlights-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-family: var(--panel);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.55;
+}
+
+.stats-highlights-list li {
+  margin-bottom: 0.2rem;
 }
 
 .credibility-panel .stat-band-inner {
@@ -608,7 +774,10 @@ body.is-timeline-open {
 
   .credibility-toggle {
     justify-content: flex-start;
-    font-size: 0.58rem;
+  }
+
+  .credibility-teaser {
+    font-size: 0.55rem;
   }
 
   .credibility-panel {

@@ -15,11 +15,11 @@ const ITERATIONS = [
   {
     version: "v0.2",
     label: "Pivot",
-    title: "Fixed name — GABESICK",
-    prompt: "“Edit the blank to now say GABESICK.”",
+    title: "Fixed display name",
+    prompt: "“Edit the blank to now say [name].”",
     changes: [
       "Removed dynamic manager field",
-      "Greeting locked to Hi GABESICK",
+      "Greeting locked to a fixed display name",
       "Company field kept for context",
     ],
     preview: "v02",
@@ -41,13 +41,13 @@ const ITERATIONS = [
   {
     version: "v1.1",
     label: "Timeline",
-    title: "Harveen + vertical panels",
-    prompt: "“Make the blank Harveen, add version control story, button opens iteration panels — v1.1.”",
+    title: "Named greeting + vertical panels",
+    prompt: "“Add a personalized greeting, version control story, and iteration panels.”",
     changes: [
-      "Greeting: Hi Harveen",
+      "Personalized greeting headline",
       "Stacked accordion version history",
       "Mini previews of every iteration",
-      "Published to GitHub Pages",
+      "Published to static hosting",
     ],
     preview: "v11",
     snapshot: "versions/v1.1/",
@@ -98,12 +98,12 @@ const ITERATIONS = [
     version: "v1.5",
     label: "Current",
     title: "CSAT stat band + testimonials",
-    prompt: "“Add CSAT stat band (90%, ~700, 4 yrs) and real customer review quotes between hero buttons and timeline.”",
+    prompt: "“Add a stats panel with CSAT, support tenure, and anonymized customer quotes.”",
     changes: [
-      "Always-visible stat band: 90% CSAT, ~700 customers, 4 yrs support",
-      "Eight verified customer testimonial cards",
-      "Placed between CTAs and version timeline",
-      "Responsive single-column stack under 600px",
+      "Stats panel: CSAT, enterprise volume, years of experience",
+      "Anonymized customer testimonial quotes",
+      "Subtle bottom-right corner toggle",
+      "Responsive layout on narrow viewports",
     ],
     preview: "v15",
     current: true,
@@ -112,48 +112,48 @@ const ITERATIONS = [
 
 const SUPPORT_CASES = [
   {
-    id: "GSG-1042",
-    title: "GitHub Pages still shows old version after push",
+    id: "CASE-1042",
+    title: "Live site still shows old version after push",
     severity: "P2",
     steps: {
       ticket: {
         label: "Ticket",
-        content: `Customer pushed v1.2 to main and sees the commit in GitHub Desktop history, but the live site at gsg-omez.github.io still shows the v1.1 layout and ghost button.`,
+        content: `Customer pushed a new release to main and sees the commit in their git history, but the live static site still shows the previous layout and styles.`,
       },
       repro: {
         label: "Repro",
-        content: `1. Push commit f3f6273 to main\n2. Open live URL in same browser session used during v1.1 testing\n3. Observe v1.2 badge in HTML but v1.1 styles and accordion behavior\n4. Hard refresh (Ctrl+Shift+R) → site updates correctly`,
+        content: `1. Push latest commit to main\n2. Open live URL in same browser session used during prior testing\n3. Observe updated HTML but stale CSS/JS behavior\n4. Hard refresh (Ctrl+Shift+R) → site updates correctly`,
       },
       rootCause: {
         label: "Root cause",
-        content: `Browser cached style.css and app.js from v1.1. index.html updated (showing v1.2 badge) but linked assets were served from cache — a classic split-brain deploy symptom on static GitHub Pages sites.`,
+        content: `Browser cached style.css and app.js from the prior release. index.html updated but linked assets were served from cache — a common split-brain symptom on static hosting.`,
       },
       reply: {
         label: "Reply",
-        content: `Hi — your push succeeded and GitHub Pages is serving v1.2. The mismatch is browser cache. Please hard-refresh (Ctrl+Shift+R) or try an incognito window. We've added ?v=1.2 cache-busting to asset URLs to prevent this going forward. Let us know if it persists after that.`,
+        content: `Hi — your push succeeded and the host is serving the new release. The mismatch is browser cache. Please hard-refresh (Ctrl+Shift+R) or try an incognito window. We've added cache-busting query params on asset URLs to reduce this going forward.`,
       },
     },
   },
   {
-    id: "GSG-1038",
-    title: "Timeline panel not using full width on mobile",
+    id: "CASE-1038",
+    title: "Timeline panel layout on mobile",
     severity: "P3",
     steps: {
       ticket: {
         label: "Ticket",
-        content: `On mobile Safari, opening "Click me to show how I was made" shows version cards stacked vertically instead of the horizontal scroll timeline seen on desktop.`,
+        content: `On mobile Safari, opening the timeline panel shows version cards stacked vertically instead of the horizontal scroll seen on desktop.`,
       },
       repro: {
         label: "Repro",
-        content: `1. Open site on iPhone 14 / Safari\n2. Tap the cyan CTA button\n3. Version cards wrap vertically — horizontal scroll track not obvious\n4. Desktop Chrome at 1280px shows correct left-to-right flow`,
+        content: `1. Open site on a mobile device\n2. Tap the timeline button\n3. Version cards wrap vertically — horizontal scroll track not obvious\n4. Desktop viewport shows correct left-to-right flow`,
       },
       rootCause: {
         label: "Root cause",
-        content: `Flex row layout with min-width cards requires explicit overflow-x on the track container. On narrow viewports the cards shrink-wrap when flex-basis isn't enforced and scroll affordance (scrollbar / swipe hint) is missing.`,
+        content: `Flex row layout with min-width cards requires explicit overflow-x on the track container. On narrow viewports scroll affordance is easy to miss.`,
       },
       reply: {
         label: "Reply",
-        content: `Thanks for the report. The timeline track uses horizontal scroll — on mobile, swipe left-to-right inside the version row to browse chronologically. We're evaluating a clearer scroll hint for v1.4. Desktop layout is unaffected.`,
+        content: `Thanks for the report. The timeline track uses horizontal scroll — on mobile, swipe left-to-right inside the version row to browse chronologically. Desktop layout is unaffected.`,
       },
     },
   },
@@ -178,8 +178,8 @@ const PREVIEWS = {
   v02: `
     <div class="mock mock-warm">
       <div class="mock-card">
-        <span class="mock-eyebrow">Stripe</span>
-        <div class="mock-title">Hi <em>GABESICK</em></div>
+        <span class="mock-eyebrow">Acme Co</span>
+        <div class="mock-title">Hi <em>Alex</em></div>
         <div class="mock-field"></div>
         <div class="mock-btn warm">Update greeting</div>
       </div>
@@ -198,7 +198,7 @@ const PREVIEWS = {
       <div class="mock-grid"></div>
       <div class="mock-card dark">
         <span class="mock-eyebrow mono">v1.1</span>
-        <div class="mock-title dark">Hi <em>Harveen</em></div>
+        <div class="mock-title dark">Hi <em>…</em></div>
         <div class="mock-btn ghost">Click me to show how I was made</div>
         <div class="mock-panel-strip"></div>
       </div>
@@ -208,7 +208,7 @@ const PREVIEWS = {
       <div class="mock-grid"></div>
       <div class="mock-card dark">
         <span class="mock-eyebrow mono">v1.2</span>
-        <div class="mock-title dark">Hi <em>Harveen</em></div>
+        <div class="mock-title dark">Hi <em>…</em></div>
         <div class="mock-btn accent">Click me to show how I was made</div>
         <div class="mock-timeline-row">
           <span></span><span></span><span></span><span></span><span class="active"></span>
@@ -220,7 +220,7 @@ const PREVIEWS = {
       <div class="mock-grid"></div>
       <div class="mock-card dark">
         <span class="mock-eyebrow mono">v1.3</span>
-        <div class="mock-title dark">Hi <em>Harveen</em></div>
+        <div class="mock-title dark">Hi <em>…</em></div>
         <div class="mock-btn accent">Timeline</div>
         <div class="mock-btn purple">Cases</div>
       </div>
@@ -241,7 +241,7 @@ const PREVIEWS = {
       <div class="mock-card dark">
         <span class="mock-eyebrow mono shimmer">v1.5</span>
         <div class="mock-title dark">Built with <em>Cursor AI</em></div>
-        <div class="mock-stat-row"><span>90%</span><span>~700</span><span>4 yrs</span></div>
+        <div class="mock-stat-row"><span>90%</span><span>High</span><span>4+ yrs</span></div>
         <div class="mock-quote-strip"></div>
         <div class="mock-btn accent sharp">Timeline</div>
       </div>
