@@ -40,16 +40,30 @@ const ITERATIONS = [
   },
   {
     version: "v1.1",
-    label: "Current",
-    title: "Harveen + iteration timeline",
+    label: "Timeline",
+    title: "Harveen + vertical panels",
     prompt: "“Make the blank Harveen, add version control story, button opens iteration panels — v1.1.”",
     changes: [
       "Greeting: Hi Harveen",
-      "Button reveals full version history",
+      "Stacked accordion version history",
       "Mini previews of every iteration",
-      "GitHub Desktop workflow notes",
+      "Published to GitHub Pages",
     ],
     preview: "v11",
+    snapshot: "versions/v1.1/",
+  },
+  {
+    version: "v1.2",
+    label: "Current",
+    title: "Horizontal timeline + bold CTA",
+    prompt: "“Make the button pop more, show version boxes left-to-right chronologically — v1.2.”",
+    changes: [
+      "Cyan accent button that stands off the background",
+      "Timeline flows left → right across the UI",
+      "Wider layout when history is open",
+      "Staggered reveal animation per version",
+    ],
+    preview: "v12",
     current: true,
   },
 ];
@@ -93,11 +107,24 @@ const PREVIEWS = {
         <div class="mock-panel-strip"></div>
       </div>
     </div>`,
+  v12: `
+    <div class="mock mock-dark">
+      <div class="mock-grid"></div>
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono">v1.2</span>
+        <div class="mock-title dark">Hi <em>Harveen</em></div>
+        <div class="mock-btn accent">Click me to show how I was made</div>
+        <div class="mock-timeline-row">
+          <span></span><span></span><span></span><span></span><span class="active"></span>
+        </div>
+      </div>
+    </div>`,
 };
 
 const revealBtn = document.getElementById("reveal-btn");
 const aboutPanel = document.getElementById("about-panel");
 const iterationList = document.getElementById("iteration-list");
+const page = document.getElementById("page");
 
 function escapeHtml(text) {
   return text
@@ -110,17 +137,20 @@ function escapeHtml(text) {
 function renderIterations() {
   iterationList.innerHTML = ITERATIONS.map(
     (item, index) => `
-    <article class="iteration-card${item.current ? " is-current" : ""}" data-index="${index}">
-      <button type="button" class="iteration-toggle" aria-expanded="false">
+    <article
+      class="iteration-card${item.current ? " is-current" : ""}"
+      data-index="${index}"
+      style="--stagger: ${index}"
+    >
+      <div class="iteration-head">
         <div class="iteration-meta">
           <span class="version-badge">${escapeHtml(item.version)}</span>
           ${item.label ? `<span class="version-label">${escapeHtml(item.label)}</span>` : ""}
           ${item.current ? '<span class="current-pill">You are here</span>' : ""}
         </div>
         <h3 class="iteration-title">${escapeHtml(item.title)}</h3>
-        <span class="chevron" aria-hidden="true"></span>
-      </button>
-      <div class="iteration-body" hidden>
+      </div>
+      <div class="iteration-body">
         <blockquote class="cursor-prompt">${escapeHtml(item.prompt)}</blockquote>
         <ul class="change-list">
           ${item.changes.map((c) => `<li>${escapeHtml(c)}</li>`).join("")}
@@ -128,26 +158,13 @@ function renderIterations() {
         ${PREVIEWS[item.preview] ?? ""}
         ${
           item.snapshot
-            ? `<p class="snapshot-note">Snapshot saved at <code>${escapeHtml(item.snapshot)}</code> for git diff.</p>`
+            ? `<p class="snapshot-note">Snapshot at <code>${escapeHtml(item.snapshot)}</code></p>`
             : ""
         }
       </div>
+      ${index < ITERATIONS.length - 1 ? '<span class="timeline-arrow" aria-hidden="true">→</span>' : ""}
     </article>`
   ).join("");
-}
-
-function bindIterationToggles() {
-  iterationList.querySelectorAll(".iteration-toggle").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const card = btn.closest(".iteration-card");
-      const body = card.querySelector(".iteration-body");
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-
-      btn.setAttribute("aria-expanded", String(!isOpen));
-      body.hidden = isOpen;
-      card.classList.toggle("is-open", !isOpen);
-    });
-  });
 }
 
 revealBtn.addEventListener("click", () => {
@@ -155,6 +172,8 @@ revealBtn.addEventListener("click", () => {
 
   revealBtn.setAttribute("aria-expanded", String(!isOpen));
   aboutPanel.hidden = isOpen;
+  page.classList.toggle("is-timeline-open", !isOpen);
+  document.body.classList.toggle("is-timeline-open", !isOpen);
 
   if (!isOpen) {
     aboutPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -162,4 +181,3 @@ revealBtn.addEventListener("click", () => {
 });
 
 renderIterations();
-bindIterationToggles();

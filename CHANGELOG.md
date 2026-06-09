@@ -2,6 +2,13 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.2 — Horizontal timeline + bold CTA
+- Cyan accent button with glow — clearly distinct from dark background
+- Version boxes flow left → right in chronological order
+- Page widens when timeline is open to use more horizontal space
+- Staggered slide-in animation per version card
+- v1.1 snapshot preserved in `versions/v1.1/`
+
 ## v1.1 — Harveen + iteration timeline
 - Greeting blank set to **Harveen**
 - "Click me to show how I was made" opens expandable version panels

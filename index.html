@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hi Harveen — v1.1</title>
+    <title>Hi Harveen — v1.2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,9 +15,9 @@
   <body>
     <div class="grid-bg" aria-hidden="true"></div>
 
-    <main class="page">
+    <main class="page" id="page">
       <section class="hero">
-        <p class="eyebrow">v1.1</p>
+        <p class="eyebrow">v1.2</p>
         <h1 class="greeting">
           Hi <span class="name" id="greeting-name">Harveen</span>
         </h1>
@@ -25,7 +25,7 @@
 
       <button
         type="button"
-        class="btn"
+        class="btn btn-primary"
         id="reveal-btn"
         aria-expanded="false"
         aria-controls="about-panel"
@@ -38,20 +38,20 @@
           <header class="about-header">
             <h2>Built organically with Cursor</h2>
             <p class="about-intro">
-              Each version below is a real step in this project&apos;s history. Use GitHub Desktop to
-              commit, tag, and push as you grow the site.
+              Scroll left to right — each box is a version in chronological order, from first idea to
+              where you are now.
             </p>
           </header>
 
-          <div class="iteration-list" id="iteration-list"></div>
+          <div class="timeline-track">
+            <div class="iteration-list" id="iteration-list"></div>
+          </div>
 
           <footer class="git-footer">
             <span class="tag">Git</span>
             <p>
-              In GitHub Desktop: open this folder, commit as
-              <code>v1.1 - H + iteration</code>, then create a tag
-              <code>v1.1</code>. Compare against the snapshot in
-              <code>versions/v1.0/</code>.
+              Commit as <code>v1.2 - horizontal timeline</code>, tag <code>v1.2</code>. Compare
+              against snapshots in <code>versions/v1.0/</code> and <code>versions/v1.1/</code>.
             </p>
           </footer>
         </div>
