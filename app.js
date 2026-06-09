@@ -68,16 +68,30 @@ const ITERATIONS = [
   },
   {
     version: "v1.3",
-    label: "Current",
+    label: "Cases",
     title: "Support case examples",
-    prompt: "“Add a second section below the timeline — Support case examples with Ticket → Repro → Root cause → Reply accordions.”",
+    prompt: "“Add Support case examples with Ticket → Repro → Root cause → Reply accordions — separate purple button.”",
     changes: [
-      "Distinct section under the version timeline",
-      "Expandable support case cards",
+      "Support cases in their own panel",
+      "Purple CTA separate from timeline",
       "Four-step accordion flow per case",
-      "Cases themed around real deploy & cache issues",
+      "Cases themed around real deploy issues",
     ],
     preview: "v13",
+    snapshot: "versions/v1.3/",
+  },
+  {
+    version: "v1.4",
+    label: "Current",
+    title: "Built with Cursor AI",
+    prompt: "“Rebrand to Built with Cursor AI, subtle AI background, shimmer version badge, sharper engaging buttons.”",
+    changes: [
+      "Hero: Built with Cursor AI",
+      "Subtle animated AI / tech background",
+      "Shimmering version badge",
+      "Less-rounded buttons with richer hover & click",
+    ],
+    preview: "v14",
     current: true,
   },
 ];
@@ -190,11 +204,18 @@ const PREVIEWS = {
       <div class="mock-card dark">
         <span class="mock-eyebrow mono">v1.3</span>
         <div class="mock-title dark">Hi <em>Harveen</em></div>
-        <div class="mock-btn accent">Click me to show how I was made</div>
-        <div class="mock-timeline-row">
-          <span></span><span></span><span></span><span></span><span></span><span class="active"></span>
-        </div>
-        <div class="mock-cases-strip">Support cases ↓</div>
+        <div class="mock-btn accent">Timeline</div>
+        <div class="mock-btn purple">Cases</div>
+      </div>
+    </div>`,
+  v14: `
+    <div class="mock mock-dark">
+      <div class="mock-grid"></div>
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v1.4</span>
+        <div class="mock-title dark">Built with <em>Cursor AI</em></div>
+        <div class="mock-btn accent sharp">Timeline</div>
+        <div class="mock-btn purple sharp">Cases</div>
       </div>
     </div>`,
 };

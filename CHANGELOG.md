@@ -2,6 +2,12 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.4 — Built with Cursor AI rebrand
+- Hero renamed to **Built with Cursor AI**
+- Subtle AI atmosphere: drifting orbs, node mesh, softened grid
+- Version badge shimmer + gentle float animation
+- Sharper buttons (6px radius) with lift & press interactions
+
 ## v1.3 — Support case examples
 - New section below version timeline: **Support case examples**
 - Expandable case cards with Ticket → Repro → Root cause → Reply accordions
