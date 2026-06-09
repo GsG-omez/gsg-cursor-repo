@@ -2,6 +2,11 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v2.2 — Timeline sync + maintenance contact
+- Version timeline cards through v2.2 (v1.6–v2.1 history added; v2.2 marked current)
+- Connect page shows **Under maintenance** — form and config notes removed
+- Hero skillsets in ALL CAPS matching TSE Profile skills
+
 ## v2.1 — Corner version stamp + IT background
 - Removed center version badge (V, cat, number); `v2.1` stamp fixed bottom-left
 - New IT-themed background: circuit grid, network topology, hex mesh, data flow

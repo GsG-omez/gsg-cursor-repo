@@ -96,16 +96,102 @@ const ITERATIONS = [
   },
   {
     version: "v1.5",
-    label: "Current",
-    title: "CSAT stat band + testimonials",
+    label: "Stats",
+    title: "TSE profile + testimonials",
     prompt: "“Add a stats panel with CSAT, support tenure, and anonymized customer quotes.”",
     changes: [
-      "Stats panel: CSAT, enterprise volume, years of experience",
+      "TSE Profile panel: CSAT, enterprise volume, years of experience",
       "Anonymized customer testimonial quotes",
-      "Subtle bottom-right corner toggle",
+      "Moved to subtle bottom-right corner toggle",
       "Responsive layout on narrow viewports",
     ],
     preview: "v15",
+  },
+  {
+    version: "v1.6",
+    label: "Connect",
+    title: "Connect with me page",
+    prompt: "“Add a Connect with me button and contact form page.”",
+    changes: [
+      "Orange Connect CTA on main menu",
+      "Dedicated contact.html with form layout",
+      "Secured submission pipeline (later iterations)",
+    ],
+    preview: "v16",
+  },
+  {
+    version: "v1.7",
+    label: "Theme",
+    title: "TSE purple glassmorphism",
+    prompt: "“Match TSE portfolio theme — purple glass panels, skills, tools, achievements.”",
+    changes: [
+      "Purple / indigo glassmorphism across site",
+      "TSE Profile: skills orbit, experience, tools grid",
+      "Reference cat on version badge (later moved)",
+      "Contact form security hardening",
+    ],
+    preview: "v17",
+  },
+  {
+    version: "v1.8",
+    label: "Easter egg",
+    title: "Hidden portfolio unlock",
+    prompt: "“Add a secret page mimicking a minimalist portfolio layout.”",
+    changes: [
+      "Easter egg sequence unlocks easter-egg.html",
+      "Split-layout portfolio homage page",
+      "Verified-review click trigger (v1.9)",
+    ],
+    preview: "v18",
+  },
+  {
+    version: "v1.9",
+    label: "Verified",
+    title: "Easter egg via reviews",
+    prompt: "“Change easter egg to click all three Verified labels in customer reviews.”",
+    changes: [
+      "Removed corner-click + cat sequence",
+      "Click three Verified attributions in TSE Profile",
+      "Opens easter-egg.html when complete",
+    ],
+    preview: "v19",
+  },
+  {
+    version: "v2.0",
+    label: "Polish",
+    title: "Ruby case + UI refinement",
+    prompt: "“User-provided Ruby log case study, subtler buttons, larger eyebrow.”",
+    changes: [
+      "Single support case: Ruby log parsing pipeline",
+      "Translucent CTA buttons retain color families",
+      "Fixed empty customer review quote",
+      "Version cat graphic beside cyan V",
+    ],
+    preview: "v20",
+  },
+  {
+    version: "v2.1",
+    label: "Layout",
+    title: "Corner version + IT background",
+    prompt: "“Move version to bottom-left; swap background to IT infrastructure theme.”",
+    changes: [
+      "Removed center version badge from hero",
+      "v2.x stamp fixed bottom-left with subtle hop",
+      "Circuit grid, network topology, hex mesh background",
+    ],
+    preview: "v21",
+  },
+  {
+    version: "v2.2",
+    label: "Current",
+    title: "Timeline sync + maintenance contact",
+    prompt: "“Bring version timeline up to date; contact under maintenance; capitalize skillsets.”",
+    changes: [
+      "Timeline cards through v2.2 — chronological and current",
+      "Connect page shows under-maintenance notice",
+      "Hero skillsets in Title Case from TSE profile",
+    ],
+    preview: "v22",
     current: true,
   },
 ];
@@ -252,6 +338,74 @@ const PREVIEWS = {
         <div class="mock-btn accent sharp">Timeline</div>
       </div>
     </div>`,
+  v16: `
+    <div class="mock mock-dark">
+      <div class="mock-grid"></div>
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v1.6</span>
+        <div class="mock-title dark">Built with <em>Cursor AI</em></div>
+        <div class="mock-btn accent sharp">Timeline</div>
+        <div class="mock-btn orange">Connect</div>
+      </div>
+    </div>`,
+  v17: `
+    <div class="mock mock-dark">
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v1.7</span>
+        <div class="mock-title dark">Technical Support <em>Engineer</em></div>
+        <div class="mock-skill-row"><span></span><span></span><span></span></div>
+        <div class="mock-btn accent sharp">Timeline</div>
+        <div class="mock-btn purple sharp">Cases</div>
+      </div>
+    </div>`,
+  v18: `
+    <div class="mock mock-dark">
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v1.8</span>
+        <div class="mock-title dark">Built with <em>Cursor AI</em></div>
+        <div class="mock-btn accent sharp">Timeline</div>
+        <div class="mock-btn purple sharp">Cases</div>
+        <div class="mock-btn orange">Connect</div>
+      </div>
+    </div>`,
+  v19: `
+    <div class="mock mock-dark">
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v1.9</span>
+        <div class="mock-title dark">TSE <em>Profile</em></div>
+        <div class="mock-quote-strip"></div>
+        <div class="mock-tag-row"><span>Verified</span><span>Verified</span><span>Verified</span></div>
+      </div>
+    </div>`,
+  v20: `
+    <div class="mock mock-dark">
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v2.0</span>
+        <div class="mock-title dark">Technical Support <em>Engineer</em></div>
+        <div class="mock-version-row"><span>V</span><span class="mock-cat-dot"></span><span>2.0</span></div>
+        <div class="mock-btn ghost-soft">Timeline</div>
+      </div>
+    </div>`,
+  v21: `
+    <div class="mock mock-dark">
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v2.1</span>
+        <div class="mock-title dark">Technical Support <em>Engineer</em></div>
+        <div class="mock-it-bg-strip"></div>
+        <div class="mock-corner-tag">v2.1</div>
+      </div>
+    </div>`,
+  v22: `
+    <div class="mock mock-dark">
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v2.2</span>
+        <div class="mock-title dark">Technical Support <em>Engineer</em></div>
+        <div class="mock-timeline-row">
+          <span></span><span></span><span></span><span></span><span class="active"></span>
+        </div>
+        <div class="mock-corner-tag">v2.2</div>
+      </div>
+    </div>`,
 };
 
 const revealBtn = document.getElementById("reveal-btn");
@@ -261,6 +415,7 @@ const credibilityPanel = document.getElementById("credibility-panel");
 const aboutPanel = document.getElementById("about-panel");
 const casesPanel = document.getElementById("cases-panel");
 const iterationList = document.getElementById("iteration-list");
+const timelineTrack = document.querySelector(".timeline-track");
 const casesList = document.getElementById("cases-list");
 const page = document.getElementById("page");
 
@@ -371,6 +526,8 @@ revealBtn.addEventListener("click", () => {
 
   if (!isOpen) {
     aboutPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    const currentCard = aboutPanel.querySelector(".iteration-card.is-current");
+    currentCard?.scrollIntoView({ behavior: "smooth", inline: "end", block: "nearest" });
   }
 });
 
@@ -396,3 +553,13 @@ credibilityBtn.addEventListener("click", () => {
 renderIterations();
 renderSupportCases();
 bindAccordions(casesList);
+
+timelineTrack?.addEventListener(
+  "wheel",
+  (event) => {
+    if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+    timelineTrack.scrollLeft += event.deltaY;
+    event.preventDefault();
+  },
+  { passive: false }
+);
