@@ -137,7 +137,7 @@ body.is-timeline-open {
 .page {
   position: relative;
   z-index: 1;
-  max-width: 560px;
+  max-width: min(1000px, 96vw);
   margin: 0 auto;
   min-height: 100vh;
   padding: 4rem 1.5rem;
@@ -145,7 +145,7 @@ body.is-timeline-open {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 2rem;
   transition: max-width 0.4s ease;
 }
 
@@ -321,6 +321,123 @@ body.is-timeline-open {
   gap: 0.65rem;
   width: 100%;
   max-width: 360px;
+}
+
+/* ===== CSAT STAT BAND (v1.5) ===== */
+.stat-band {
+  width: 100%;
+  margin: 0.5rem 0 0;
+}
+
+.stat-band-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 1.75rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.stat-block {
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-number {
+  font-family: var(--mono);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--btn-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-quotes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.stat-quote {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.55;
+  border-left: 2px solid rgba(167, 139, 250, 0.6);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0 6px 6px 0;
+}
+
+.stat-quote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-style: normal;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.mock-stat-row {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: center;
+  margin: 0.35rem 0;
+}
+
+.mock-stat-row span {
+  font-family: var(--mono);
+  font-size: 0.45rem;
+  color: var(--btn-primary);
+  background: rgba(34, 211, 238, 0.1);
+  padding: 0.15rem 0.3rem;
+  border-radius: 2px;
+}
+
+.mock-quote-strip {
+  height: 0.35rem;
+  background: rgba(167, 139, 250, 0.2);
+  border-radius: 2px;
+  margin: 0.25rem auto 0.35rem;
+  max-width: 80%;
+}
+
+@media (max-width: 600px) {
+  .stat-band-inner {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-quotes {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cta-group .btn {

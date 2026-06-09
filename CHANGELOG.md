@@ -2,6 +2,13 @@
 
 All notable changes to this project — built organically with Cursor.
 
+## v1.5 — CSAT stat band + testimonials
+- Always-visible stat band between hero buttons and timeline
+- Stats: **90%** Customer Satisfaction, **~700** Customers Supported, **4 yrs** Frontline Technical Support
+- Eight real customer review quotes (James, Celia, Ralph, Oliver, Tucker, Jonathan, Matt, Jack)
+- Responsive 2-column quote grid; single column under 600px
+- v1.4 snapshot preserved in `versions/v1.4/`
+
 ## v1.4 — Built with Cursor AI rebrand
 - Hero renamed to **Built with Cursor AI**
 - Subtle AI atmosphere: drifting orbs, node mesh, softened grid

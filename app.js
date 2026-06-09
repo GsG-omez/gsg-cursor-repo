@@ -82,7 +82,7 @@ const ITERATIONS = [
   },
   {
     version: "v1.4",
-    label: "Current",
+    label: "Rebrand",
     title: "Built with Cursor AI + toggle arrows",
     prompt: "“Rebrand, AI background, stick figure on V, arrow indicators on every toggle button.”",
     changes: [
@@ -92,6 +92,20 @@ const ITERATIONS = [
       "Sharper buttons with hover & click feedback",
     ],
     preview: "v14",
+    snapshot: "versions/v1.4/",
+  },
+  {
+    version: "v1.5",
+    label: "Current",
+    title: "CSAT stat band + testimonials",
+    prompt: "“Add CSAT stat band (90%, ~700, 4 yrs) and real customer review quotes between hero buttons and timeline.”",
+    changes: [
+      "Always-visible stat band: 90% CSAT, ~700 customers, 4 yrs support",
+      "Eight verified customer testimonial cards",
+      "Placed between CTAs and version timeline",
+      "Responsive single-column stack under 600px",
+    ],
+    preview: "v15",
     current: true,
   },
 ];
@@ -219,6 +233,17 @@ const PREVIEWS = {
         <div class="mock-title dark">Built with <em>Cursor AI</em></div>
         <div class="mock-btn accent sharp">Timeline</div>
         <div class="mock-btn purple sharp">Cases</div>
+      </div>
+    </div>`,
+  v15: `
+    <div class="mock mock-dark">
+      <div class="mock-grid"></div>
+      <div class="mock-card dark">
+        <span class="mock-eyebrow mono shimmer">v1.5</span>
+        <div class="mock-title dark">Built with <em>Cursor AI</em></div>
+        <div class="mock-stat-row"><span>90%</span><span>~700</span><span>4 yrs</span></div>
+        <div class="mock-quote-strip"></div>
+        <div class="mock-btn accent sharp">Timeline</div>
       </div>
     </div>`,
 };
