@@ -13,35 +13,6 @@
     );
   }
 
-  var links = document.querySelectorAll(".jump a[data-section]");
-  var sections = [];
-  links.forEach(function (link) {
-    var el = document.getElementById(link.getAttribute("data-section"));
-    if (el) sections.push({ link: link, el: el });
-  });
-
-  function setActive(id) {
-    links.forEach(function (link) {
-      link.classList.toggle("is-active", link.getAttribute("data-section") === id);
-    });
-  }
-
-  if ("IntersectionObserver" in window && sections.length) {
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-35% 0px -50% 0px", threshold: 0 }
-    );
-    sections.forEach(function (s) {
-      io.observe(s.el);
-    });
-  } else if (sections[0]) {
-    setActive(sections[0].el.id);
-  }
-
   var img = document.querySelector(".portrait");
   if (img) {
     function useFallback() {
