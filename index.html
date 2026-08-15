@@ -48,13 +48,13 @@
             </div>
           </div>
           <h1>Gabriel Gomez</h1>
-          <h2>Dedicated Enterprise Engineer and cat father</h2>
+          <h2>Dedicated Enterprise Engineer</h2>
           <p class="lede">
-            Enterprise live chat and email with DevOps teams: parsing, SSO, and the incidents that don’t fit a runbook.
+            Partnering with enterprise DevOps teams on parsing, identity, and the incidents that don't fit a runbook.
           </p>
           <nav class="contact-bar" aria-label="Contact">
             <a href="https://www.linkedin.com/in/gabriel-gz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="contact.html">Email</a>
+            <a href="contact.html">gomez.gabe@protonmail.com</a>
             <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
           </nav>
           <nav class="jump" aria-label="In-page jump links">
@@ -78,6 +78,9 @@
                   </summary>
                   <div class="case-body">
                     <p>
+                      Ingest was trustworthy again after remapping indexes and fixing grok, key-value, and Sawmill rules — including a 21k+ SpanMetrics cardinality case and the 2000-field ceiling.<!-- TODO: Gabriel to supply -->
+                    </p>
+                    <p>
                       DevOps would ship logs that looked fine in the agent and vanished or mapped wrong in the index — <code>_grokparsefailure</code>, JSON strings where objects should be, timestamps in the wrong field, the 2000-field ceiling. I authored and debugged grok, key-value, and Sawmill rules, remapped indexes, and tuned a 21k+ SpanMetrics cardinality case so ingest was trustworthy again.
                     </p>
                     <ul class="pills">
@@ -99,7 +102,10 @@
                   </summary>
                   <div class="case-body">
                     <p>
-                      Enterprise customers — and the DevOps engineers integrating the product — hit SAML sign-in URLs, mismatched certs, and OAuth flows that died only in prod. I configured and troubleshot Auth0 and IDP setups across dozens of environments until the failure was a documented, repeatable fix instead of a black box.
+                      Production SSO started completing after the same SAML setup that worked in staging failed in prod — the mismatch was on the service-provider side (sign-in URL and .pem/.cert), not a broken customer IdP.
+                    </p>
+                    <p>
+                      The surface I own is reading the error and finding the cause. We consume the customer’s IdP through the product UI (SAML or OAuth via Auth0) — we don’t architect their identity tenant. I compared the failed assertion and the Sign-in URL / certificate against staging, found the prod values didn’t match, and wrote that check down so the next identical failure wasn’t a black box.
                     </p>
                     <ul class="pills">
                       <li>SAML</li>
@@ -119,6 +125,9 @@
                     <span class="chevron" aria-hidden="true"></span>
                   </summary>
                   <div class="case-body">
+                    <p>
+                      Turned a two-account config ticket into a platform incident and got metrics restored the same day — root cause was a Prometheus 3.0 upgrade that broke a query the accounts API depended on.
+                    </p>
                     <p>
                       Two accounts suddenly saw a “Get started” page and 500s instead of their metrics plan. I escalated with errors and screenshots, then found the same failure on a second unrelated account — which turned a “customer config” ticket into a platform incident. A Prometheus 3.0 upgrade had broken a query the accounts API used. Incident channel opened; restored the same day.
                     </p>
@@ -141,6 +150,9 @@
                   </summary>
                   <div class="case-body">
                     <p>
+                      Got two logically equivalent searches returning matching counts the same day — a cost-saving index-template change had altered free-text mapping. A second regression the next morning was caught in the incident channel.
+                    </p>
+                    <p>
                       One customer’s logically equivalent searches against the same field returned wildly different volumes. I packaged both queries and request IDs side by side after the first theories failed. Root cause: a cost-saving index-template change had altered free-text mapping. Fixed the same day; a second regression the next morning was caught in the incident channel.
                     </p>
                     <ul class="pills">
@@ -162,6 +174,9 @@
                   </summary>
                   <div class="case-body">
                     <p>
+                      Feature enabled and verified before the POC deadline after an enrichment-permissioning block and a broken AWS credential.<!-- TODO: Gabriel to supply -->
+                    </p>
+                    <p>
                       A prospect’s POC depended on an enrichment feature that needed backend permissioning. I escalated with account and token context already gathered, then stayed through a second blocker when the AWS credential powering the feature broke. Feature enabled and verified before the deadline — the kind of work that sits next to the account team, not just the ticket queue.
                     </p>
                     <ul class="pills">
@@ -179,7 +194,7 @@
         <section id="about" aria-label="About">
           <h2 class="section-label">About</h2>
           <p>
-            I’m a technical support engineer who likes getting into the weeds of problems and figuring out why something isn’t working.
+            I’m a technical support engineer who likes getting into the weeds of problems and figuring out why something isn’t working.<!-- TODO: Gabriel to supply -->
           </p>
           <p>
             Most of my day-to-day work is with enterprise customers and the engineers behind their environments, troubleshooting integrations, APIs, logs, parsing, configurations, and the weird edge cases that don’t always have an obvious answer. I’m comfortable being the person who owns a problem, digs through what’s actually happening, and works with the customer and engineering teams until we have an answer.
