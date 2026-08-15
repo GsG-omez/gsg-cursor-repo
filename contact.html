@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connect — Technical Support Engineer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Email Gabriel Gomez</title>
+    <meta name="description" content="Reach Gabriel Gomez at gomez.gabe@protonmail.com" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css?v=2.2" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="it-bg" aria-hidden="true">
-      <div class="it-circuit-layer"></div>
-      <div class="it-network-layer"></div>
-      <div class="it-data-flow"></div>
-      <div class="it-orb it-orb-1"></div>
-      <div class="it-orb it-orb-2"></div>
-      <div class="it-hex-layer"></div>
+    <a class="skip" href="#contact-form">Skip to form</a>
+    <div class="contact-page">
+      <p class="back"><a href="index.html">← Back to case studies</a></p>
+      <h1>Email</h1>
+      <p class="lede">
+        Write here and your mail app will open a message to
+        <a href="mailto:gomez.gabe@protonmail.com">gomez.gabe@protonmail.com</a>.
+      </p>
+      <form id="contact-form" class="mail-form">
+        <label>
+          Your name
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          Your email
+          <input type="email" name="from" autocomplete="email" required />
+        </label>
+        <label>
+          Subject
+          <input type="text" name="subject" required />
+        </label>
+        <label>
+          Message
+          <textarea name="body" rows="8" required></textarea>
+        </label>
+        <button type="submit">Open email</button>
+      </form>
     </div>
-
-    <main class="page page-contact">
-      <div class="contact-card panel-box">
-        <a href="index.html" class="contact-back">← Back to site</a>
-
-        <header class="contact-header">
-          <h1>Connect with me</h1>
-        </header>
-
-        <p class="contact-maintenance" role="status">Under maintenance</p>
-      </div>
-    </main>
+    <script>
+      document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var d = new FormData(e.target);
+        var name = String(d.get("name") || "").trim();
+        var from = String(d.get("from") || "").trim();
+        var subject = String(d.get("subject") || "").trim();
+        var body = String(d.get("body") || "").trim();
+        var lines = body + "\n\n— " + name + " (" + from + ")";
+        var href =
+          "mailto:gomez.gabe@protonmail.com" +
+          "?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          encodeURIComponent(lines);
+        window.location.href = href;
+      });
+    </script>
   </body>
 </html>

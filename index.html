@@ -1,506 +1,206 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
   <head>
-
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Technical Support Engineer — v2.1</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap"
-
-      rel="stylesheet"
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gabriel Gomez — Case studies</title>
+    <meta
+      name="description"
+      content="Case studies from enterprise observability support: log parsing, SSO, and production incidents at Logz.io."
     />
-
-    <link rel="stylesheet" href="style.css?v=2.2" />
-
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gabriel Gomez — Case studies" />
+    <meta
+      property="og:description"
+      content="Selected work from enterprise SaaS support — parsing pipelines, identity, and incidents, not a resume replica."
+    />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
-
   <body>
+    <div id="spotlight" aria-hidden="true"></div>
+    <a class="skip" href="#content">Skip to content</a>
 
-    <div class="it-bg" aria-hidden="true">
-      <div class="it-circuit-layer"></div>
-      <div class="it-network-layer"></div>
-      <div class="it-data-flow"></div>
-      <div class="it-orb it-orb-1"></div>
-      <div class="it-orb it-orb-2"></div>
-      <div class="it-hex-layer"></div>
+    <div class="layout">
+      <header class="intro">
+        <div class="intro-top">
+          <div class="linkedin-head">
+            <div class="banner" aria-hidden="true">
+              <p>if (prod !== staging) { check.the.certs(); follow.the.token(); }</p>
+              <p>grok.parse(the_weird_one) // 2000 fields. one of them is lying.</p>
+              <p>kubectl logs -f --tail=50  # it’s never just the agent</p>
+              <p>saml.assert(); cat.feed(); incident.own(); ship.again();</p>
+            </div>
+            <div class="portrait-wrap">
+              <img
+                class="portrait"
+                src="assets/portrait.jpg?v=4"
+                alt="Portrait of Gabriel Gomez"
+                width="152"
+                height="152"
+              />
+            </div>
+          </div>
+          <h1>Gabriel Gomez</h1>
+          <h2>Dedicated Enterprise Engineer and cat father</h2>
+          <p class="lede">
+            Enterprise live chat and email with DevOps teams: parsing, SSO, and the incidents that don’t fit a runbook. Selected work below.
+          </p>
+          <nav class="contact-bar" aria-label="Contact">
+            <a href="https://www.linkedin.com/in/gabriel-gz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="contact.html">Email</a>
+            <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          </nav>
+          <nav class="jump" aria-label="In-page jump links">
+            <a href="#cases" data-section="cases">Case studies</a>
+            <a href="#about" data-section="about">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="content">
+        <section id="cases" aria-label="Case studies">
+          <h2 class="section-label">Case studies</h2>
+          <ul class="cases">
+            <li>
+              <article class="card case-card">
+                <p class="when">Parsing</p>
+                <details>
+                  <summary>
+                    <h3>When the pipeline dropped fields</h3>
+                    <span class="chevron" aria-hidden="true"></span>
+                  </summary>
+                  <div class="case-body">
+                    <p>
+                      DevOps would ship logs that looked fine in the agent and vanished or mapped wrong in the index — <code>_grokparsefailure</code>, JSON strings where objects should be, timestamps in the wrong field, the 2000-field ceiling. I authored and debugged grok, key-value, and Sawmill rules, remapped indexes, and tuned a 21k+ SpanMetrics cardinality case so ingest was trustworthy again.
+                    </p>
+                    <ul class="pills">
+                      <li>ELK</li>
+                      <li>Grok / Sawmill</li>
+                      <li>OTEL / Filebeat</li>
+                    </ul>
+                  </div>
+                </details>
+              </article>
+            </li>
+            <li>
+              <article class="card case-card">
+                <p class="when">Identity</p>
+                <details>
+                  <summary>
+                    <h3>SSO that worked in staging, not production</h3>
+                    <span class="chevron" aria-hidden="true"></span>
+                  </summary>
+                  <div class="case-body">
+                    <p>
+                      Enterprise customers — and the DevOps engineers integrating the product — hit SAML sign-in URLs, mismatched certs, and OAuth flows that died only in prod. I configured and troubleshot Auth0 and IDP setups across dozens of environments until the failure was a documented, repeatable fix instead of a black box.
+                    </p>
+                    <ul class="pills">
+                      <li>SAML</li>
+                      <li>OAuth</li>
+                      <li>Auth0</li>
+                    </ul>
+                  </div>
+                </details>
+              </article>
+            </li>
+            <li>
+              <article class="card case-card">
+                <p class="when">Incident</p>
+                <details>
+                  <summary>
+                    <h3>A silent upgrade that took down metrics</h3>
+                    <span class="chevron" aria-hidden="true"></span>
+                  </summary>
+                  <div class="case-body">
+                    <p>
+                      Two accounts suddenly saw a “Get started” page and 500s instead of their metrics plan. I escalated with errors and screenshots, then found the same failure on a second unrelated account — which turned a “customer config” ticket into a platform incident. A Prometheus 3.0 upgrade had broken a query the accounts API used. Incident channel opened; restored the same day.
+                    </p>
+                    <ul class="pills">
+                      <li>Metrics</li>
+                      <li>Incident response</li>
+                      <li>Cross-team</li>
+                    </ul>
+                  </div>
+                </details>
+              </article>
+            </li>
+            <li>
+              <article class="card case-card">
+                <p class="when">Search</p>
+                <details>
+                  <summary>
+                    <h3>Two equivalent queries, two different counts</h3>
+                    <span class="chevron" aria-hidden="true"></span>
+                  </summary>
+                  <div class="case-body">
+                    <p>
+                      One customer’s logically equivalent searches against the same field returned wildly different volumes. I packaged both queries and request IDs side by side after the first theories failed. Root cause: a cost-saving index-template change had altered free-text mapping. Fixed the same day; a second regression the next morning was caught in the incident channel.
+                    </p>
+                    <ul class="pills">
+                      <li>Elasticsearch</li>
+                      <li>Index mapping</li>
+                      <li>Reproduction</li>
+                    </ul>
+                  </div>
+                </details>
+              </article>
+            </li>
+            <li>
+              <article class="card case-card">
+                <p class="when">Deadline</p>
+                <details>
+                  <summary>
+                    <h3>Unblocking a proof of concept</h3>
+                    <span class="chevron" aria-hidden="true"></span>
+                  </summary>
+                  <div class="case-body">
+                    <p>
+                      A prospect’s POC depended on an enrichment feature that needed backend permissioning. I escalated with account and token context already gathered, then stayed through a second blocker when the AWS credential powering the feature broke. Feature enabled and verified before the deadline — the kind of work that sits next to the account team, not just the ticket queue.
+                    </p>
+                    <ul class="pills">
+                      <li>Integrations</li>
+                      <li>Account team</li>
+                      <li>AWS</li>
+                    </ul>
+                  </div>
+                </details>
+              </article>
+            </li>
+          </ul>
+        </section>
+
+        <section id="about" aria-label="About">
+          <h2 class="section-label">About</h2>
+          <p>
+            I’m a technical support engineer who likes getting into the weeds of problems and figuring out why something isn’t working.
+          </p>
+          <p>
+            Most of my day-to-day work is with enterprise customers and the engineers behind their environments, troubleshooting integrations, APIs, logs, parsing, configurations, and the weird edge cases that don’t always have an obvious answer. I’m comfortable being the person who owns a problem, digs through what’s actually happening, and works with the customer and engineering teams until we have an answer.
+          </p>
+          <p>
+            I’m based in New York and interested in Senior Technical Support, Technical Account Management, and Solutions Engineering roles.
+          </p>
+          <p>
+            The dates, titles, and rest of the job-history stuff are on my
+            <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">resume</a>.
+          </p>
+        </section>
+
+        <footer class="fine">
+          <p>
+            A case-study portfolio, not a résumé replica. Built in HTML and CSS.
+          </p>
+        </footer>
+      </main>
     </div>
 
-
-
-    <main class="page" id="page">
-
-      <section class="hero">
-
-        <p class="hero-eyebrow">Built with Cursor AI</p>
-
-        <h1 class="greeting">
-
-          Technical Support <span class="name">Engineer</span>
-
-        </h1>
-
-        <p class="hero-sub">
-          TROUBLESHOOTING · CUSTOMER EMPATHY · PROBLEM SOLVING · DOCUMENTATION · COMMUNICATION · SYSTEM KNOWLEDGE
-        </p>
-
-      </section>
-
-
-
-      <div class="cta-group">
-
-        <button
-
-          type="button"
-
-          class="btn btn-primary"
-
-          id="reveal-btn"
-
-          aria-expanded="false"
-
-          aria-controls="about-panel"
-
-        >
-
-          <span class="toggle-arrow" aria-hidden="true"></span>
-
-          <span class="btn-label">Click me to show how I was made</span>
-
-        </button>
-
-
-
-        <button
-
-          type="button"
-
-          class="btn btn-cases"
-
-          id="cases-btn"
-
-          aria-expanded="false"
-
-          aria-controls="cases-panel"
-
-        >
-
-          <span class="toggle-arrow" aria-hidden="true"></span>
-
-          <span class="btn-label">Support case examples</span>
-
-        </button>
-
-
-
-        <a href="contact.html" class="btn btn-connect">
-
-          <span class="btn-link-arrow" aria-hidden="true">→</span>
-
-          <span class="btn-label">Connect with me</span>
-
-        </a>
-
-      </div>
-
-
-
-      <section class="about-panel" id="about-panel" hidden>
-
-        <div class="about-inner panel-box">
-
-          <header class="about-header">
-
-            <h2>Built organically with Cursor</h2>
-
-            <p class="about-intro">
-
-              Scroll left to right — each box is a version in chronological order, from first idea to
-
-              where you are now.
-
-            </p>
-
-          </header>
-
-
-
-          <div class="timeline-track">
-
-            <div class="iteration-list" id="iteration-list"></div>
-
-          </div>
-
-
-
-          <footer class="git-footer">
-
-            <span class="tag">Git</span>
-
-            <p>
-
-              Commit as <code>v2.1 - corner version and it bg</code>, tag <code>v2.1</code>. Snapshot at
-
-              <code>versions/v2.1/</code>.
-
-            </p>
-
-          </footer>
-
-        </div>
-
-      </section>
-
-
-
-      <section class="cases-panel" id="cases-panel" hidden>
-
-        <div class="cases-inner panel-box">
-
-          <header class="cases-header">
-
-            <h2 id="cases-heading">Support case examples</h2>
-
-            <p class="cases-intro">
-
-              Real-world troubleshooting flows — expand a case, then walk through Ticket → Repro →
-
-              Root cause → Reply.
-
-            </p>
-
-          </header>
-
-          <div class="cases-list" id="cases-list"></div>
-
-        </div>
-
-      </section>
-
-    </main>
-
-
-
-    <aside class="credibility-corner" aria-label="Support track record">
-
-      <button
-
-        type="button"
-
-        class="credibility-toggle"
-
-        id="credibility-btn"
-
-        aria-expanded="false"
-
-        aria-controls="credibility-panel"
-
-      >
-
-        <span class="toggle-arrow" aria-hidden="true"></span>
-
-        <span class="credibility-label">
-
-          <span class="credibility-title">TSE Profile</span>
-
-          <span class="credibility-teaser">
-
-            <span class="credibility-stat">90%</span> CSAT · 4+ yrs · observability
-
-          </span>
-
-        </span>
-
-      </button>
-
-      <div class="credibility-panel panel-box" id="credibility-panel" hidden>
-
-        <header class="stats-panel-header">
-
-          <h2 class="stats-panel-title">TSE Profile</h2>
-
-          <p class="stats-panel-sub">Skills, tools &amp; impact — anonymized overview</p>
-
-        </header>
-
-
-
-        <p class="stats-summary">
-
-          Technical support engineer focused on enterprise observability, cloud infrastructure, and
-
-          API integrations. Leads escalations, mentors peers, and coordinates with engineering and
-
-          account teams.
-
-        </p>
-
-
-
-        <div class="stat-band-inner">
-
-          <div class="stat-block">
-
-            <div class="stat-number">90%</div>
-
-            <div class="stat-label">Customer Satisfaction</div>
-
-          </div>
-
-          <div class="stat-divider" aria-hidden="true"></div>
-
-          <div class="stat-block">
-
-            <div class="stat-number">High</div>
-
-            <div class="stat-label">Ticket Volume</div>
-
-          </div>
-
-          <div class="stat-divider" aria-hidden="true"></div>
-
-          <div class="stat-block">
-
-            <div class="stat-number">4+ yrs</div>
-
-            <div class="stat-label">Support Engineering</div>
-
-          </div>
-
-        </div>
-
-
-
-        <section class="tse-section" aria-label="Core skills">
-
-          <h3 class="stats-highlights-title">Skills that power solutions</h3>
-
-          <div class="tse-skills-orbit">
-
-            <div class="tse-skill-chip"><span class="tse-skill-icon">⌕</span> Troubleshooting</div>
-
-            <div class="tse-skill-chip"><span class="tse-skill-icon">♥</span> Customer empathy</div>
-
-            <div class="tse-skill-chip"><span class="tse-skill-icon">✦</span> Problem solving</div>
-
-            <div class="tse-skill-chip"><span class="tse-skill-icon">▤</span> Documentation</div>
-
-            <div class="tse-skill-chip"><span class="tse-skill-icon">◈</span> Communication</div>
-
-            <div class="tse-skill-chip"><span class="tse-skill-icon">⬡</span> System knowledge</div>
-
-          </div>
-
-        </section>
-
-
-
-        <section class="tse-section" aria-label="Experience">
-
-          <h3 class="stats-highlights-title">Experience</h3>
-
-          <ul class="tse-experience-list">
-
-            <li class="tse-exp-item">
-
-              <span class="tse-exp-dot" aria-hidden="true"></span>
-
-              <div>
-
-                <strong>Technical Support Engineer</strong>
-
-                <span>Enterprise observability · escalations · mentoring</span>
-
-              </div>
-
-            </li>
-
-            <li class="tse-exp-item">
-
-              <span class="tse-exp-dot" aria-hidden="true"></span>
-
-              <div>
-
-                <strong>Support Specialist</strong>
-
-                <span>Cloud integrations · API troubleshooting · KB authoring</span>
-
-              </div>
-
-            </li>
-
-            <li class="tse-exp-item">
-
-              <span class="tse-exp-dot" aria-hidden="true"></span>
-
-              <div>
-
-                <strong>IT Service Desk</strong>
-
-                <span>Incident triage · remote support · customer communication</span>
-
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-
-        <section class="tse-section" aria-label="Tools">
-
-          <h3 class="stats-highlights-title">Tools you use</h3>
-
-          <div class="tse-tools-grid">
-
-            <div class="tse-tool-tile">ServiceNow</div>
-
-            <div class="tse-tool-tile">Jira</div>
-
-            <div class="tse-tool-tile">Zendesk</div>
-
-            <div class="tse-tool-tile">Salesforce</div>
-
-            <div class="tse-tool-tile">Microsoft 365</div>
-
-            <div class="tse-tool-tile">Slack</div>
-
-            <div class="tse-tool-tile">Teams</div>
-
-            <div class="tse-tool-tile">Remote tools</div>
-
-          </div>
-
-        </section>
-
-
-
-        <section class="tse-section" aria-label="Achievements">
-
-          <h3 class="stats-highlights-title">Achievements that count</h3>
-
-          <div class="tse-achievements">
-
-            <div class="tse-achievement">
-
-              <span class="tse-achievement-icon" aria-hidden="true">▮</span>
-
-              <div class="tse-achievement-body">
-
-                <strong>90% CSAT</strong>
-
-                <span>Consistent customer satisfaction scores</span>
-
-              </div>
-
-            </div>
-
-            <div class="tse-achievement">
-
-              <span class="tse-achievement-icon" aria-hidden="true">◷</span>
-
-              <div class="tse-achievement-body">
-
-                <strong>Faster resolution</strong>
-
-                <span>Team KB &amp; documentation improvements</span>
-
-              </div>
-
-            </div>
-
-            <div class="tse-achievement">
-
-              <span class="tse-achievement-icon" aria-hidden="true">◎</span>
-
-              <div class="tse-achievement-body">
-
-                <strong>High volume</strong>
-
-                <span>Enterprise-scale ticket throughput</span>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-
-        <section class="stats-highlights tse-section" aria-label="Technical stack">
-
-          <h3 class="stats-highlights-title">Technical stack</h3>
-
-          <ul class="stats-highlights-list">
-
-            <li>Log platforms, search &amp; analytics, metrics, tracing</li>
-
-            <li>Kubernetes, YAML / Helm, Linux, cloud object storage</li>
-
-            <li>API integration, microservices, SQL, Agile workflows</li>
-
-          </ul>
-
-        </section>
-
-
-
-        <h3 class="stats-highlights-title stats-reviews-title">Customer reviews</h3>
-
-        <div class="stat-quotes">
-
-          <blockquote class="stat-quote">
-
-            "Did a fantastic job getting my logs parsed into usable fields. Quick, easy, and awesome work."
-
-            <cite>— <span class="egg-verified-hit" data-egg-verified="1" tabindex="0" role="button">Verified</span> customer</cite>
-
-          </blockquote>
-
-          <blockquote class="stat-quote">
-
-            "Extremely attentive and resolved my problem in just a few minutes."
-
-            <cite>— <span class="egg-verified-hit" data-egg-verified="2" tabindex="0" role="button">Verified</span> survey</cite>
-
-          </blockquote>
-
-          <blockquote class="stat-quote">
-
-            "Technical support was excellent. Took the time to understand the issue and got to the right solution."
-
-            <cite>— <span class="egg-verified-hit" data-egg-verified="3" tabindex="0" role="button">Verified</span> customer</cite>
-
-          </blockquote>
-
-        </div>
-
-      </div>
-
-    </aside>
-
-    <p class="version-corner" aria-label="Current version 2.2">v2.2</p>
-
-    <script src="app.js?v=2.2"></script>
-    <script src="easter-egg-sequence.js?v=2.2"></script>
-
+    <script src="js/main.js"></script>
   </body>
-
 </html>
-
