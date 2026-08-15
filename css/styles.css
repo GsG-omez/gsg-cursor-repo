@@ -159,7 +159,7 @@ strong {
 }
 
 #cases {
-  padding-top: 2.75rem;
+  padding-top: 0.5rem;
 }
 
 .linkedin-head {
@@ -445,18 +445,15 @@ strong {
   .layout {
     display: grid;
     grid-template-columns: minmax(18rem, 22rem) minmax(0, 1fr);
+    align-items: start;
     gap: 4rem;
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
   }
 
   .intro {
     position: sticky;
-    top: 6rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: calc(100vh - 12rem);
+    top: 1.5rem;
   }
 
   .card {
@@ -465,7 +462,7 @@ strong {
   }
 
   #cases {
-    padding-top: 4.5rem;
+    padding-top: 0;
   }
 }
 
